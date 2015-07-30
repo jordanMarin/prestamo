@@ -11,6 +11,11 @@
         <input value="" type="text" class="form-control" id="inputUsuario" name="inputUsuario" placeholder="Digite usuario">
       </div>
     
+    <label for="inputPassword" class="col-sm-2 control-label">Contraseña</label>
+      <div class="col-sm-10">
+        <input value="" type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Digite contraseña">
+      </div>
+    
   </fieldset>
   <fieldset>
     <legend><i class="glyphicon glyphicon-phone"></i>Datos del cliente</legend>
@@ -139,7 +144,7 @@
      
      
      
-     
+     <!--
       <label for="inputUsuario" class="col-sm-2 control-label">USUARIO</label>
       <div class="col-sm-10">
         <select class="form-control" name="<?php echo clienteTableClass::getNameField(clienteTableClass::USUARIO_ID, true) ?>">
@@ -154,6 +159,7 @@
           <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
         <?php endif ?>
       </div>
+     -->
     
     
     
