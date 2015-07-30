@@ -1,0 +1,76 @@
+all:
+  favicon: hola.ico
+  title: titulo de la pagina general
+  meta:
+    - charset="UTF-8"
+    - http-equiv="X-UA-Compatible" content="IE=edge"
+  javascript:
+    - jquery-1.11.1.min.js
+    - bootstrap.js
+    - main.js
+  stylesheet:
+    - bootstrap.css
+    - main.css
+    - font-awesome.min.css
+
+shfSecurity:
+  index:
+    title: Identificacion de usuario
+    stylesheet:
+      - signin.css
+
+default:
+  index:
+    javascript:
+      - index.js
+
+prestamo:
+  procesar:
+    stylesheet:
+      - ejemplo.css
+
+      
+prestamo:
+  formInsertarCargo:
+    stylesheet:
+      - cargo.css
+prestamo:
+  barrio:
+    stylesheet:
+      - formulario.css
+  prestamo:
+  cliente:
+    stylesheet:
+      - cliente.css
+  prestamo:
+  codeudor:
+     stylesheet:
+      - codeudor.css
+  prestamo:
+  empleado:
+     stylesheet:
+      - empleado.css
+      
+  prestamo:
+  formato_de_prestamo:
+    stylesheet:
+      - formato_de_prestamo.css
+      
+  prestamo:
+  localidad:
+     stylesheet:
+      - localidad.css
+   
+  prestamo:
+  negocio:
+     stylesheet:
+      - negocio.css    
+      
+      
+  prestamo:
+  paz_y_salvo:
+     stylesheet:
+      - paz_y_salvo.css    
+      
+    
+    
