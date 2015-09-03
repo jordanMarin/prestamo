@@ -2,7 +2,7 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\request\requestClass as request ?>
 <?php use mvc\view\viewClass as view ?>
-<form class="form-horizontal ibody" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('prestamo', 'createCargo') ?>">
+<form class="form-horizontal ibody" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('prestamo', 'createNegocio') ?>">
   <fieldset>
     <legend><i class="fa fa-street-view"></i> Nuevo cargo</legend>
     <?php if(session::getInstance()->hasError('inputCargo')): ?>

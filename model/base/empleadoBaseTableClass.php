@@ -29,25 +29,25 @@ class empleadoBaseTableClass extends tableBaseClass {
 
     
 
-  const ID = 'id';
-  const NOMBRE= 'nombre';
-  const NOMBRE_LENGTH = 50;
+   const ID = 'id';
+   const NOMBRE= 'nombre';
+   const NOMBRE_LENGTH = 50;
    const APELLIDO_EMPLEADO= 'apellido_empleado';
-  const APELLIDO_EMPLEADO_LENGTH = 50;
+   const APELLIDO_EMPLEADO_LENGTH = 50;
    const DIRECCION_EMPLEADO= 'direccion_empleado';
-  const DIRECCION_EMPLEADO_LENGTH = 50;
+   const DIRECCION_EMPLEADO_LENGTH = 50;
    const TELEFONO_EMPLEADO= 'telefono_empleado';
-  const TELEFONO_EMPLEADO_LENGTH = 15;
+   const TELEFONO_EMPLEADO_LENGTH = 15;
    const MOVIL_EMPELADO= 'movil_empelado';
-  const MOVIL_EMPELADO_LENGTH = 12;
+   const MOVIL_EMPELADO_LENGTH = 12;
    const CORREO_EMPLEADO= 'correo_empleado';
-  const CORREO_EMPLEADO_LENGTH = 100;
-   const CARGO_ID= 'cargo';
-   const USUARIO_ID= 'usuario';
+   const CORREO_EMPLEADO_LENGTH = 100;
+   const CARGO_ID= 'cargo_id';
+   const USUARIO_ID= 'usuario_id';
    const ACTIVED = 'actived';
-const CREATED_AT = 'created_at';
-  const DELETED_AT = 'deleted_at';
-const UPDATED_AT = 'updated_at';
+   const CREATED_AT = 'created_at';
+   const DELETED_AT = 'deleted_at';
+   const UPDATED_AT = 'updated_at';
 
   
   

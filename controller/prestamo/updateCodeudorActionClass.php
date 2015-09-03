@@ -7,20 +7,18 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-use mvc\validator\createCodeudorActionClass as validate;
 
 /**
- * Description of createCodeudorActionClass
+ * Description of ejemploClass
  *
- * @author Jordan Marín <aldany29@hotmail.com>
+ * @author Julian Lasso <aldany29@hotmail.com>
  */
-class createCodeudorActionClass extends controllerClass implements controllerActionInterface {
+class updateCodeudorActionClass extends controllerClass implements controllerActionInterface {
 
-  public function execute() {
+ public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
-         
-        
+
         
         $data = array(
             codeudorTableClass::TIPO_DOCUMENTO_ID => request::getInstance()->getPost(codeudorTableClass::getNameField(codeudorTableClass::TIPO_DOCUMENTO_ID, true)),
@@ -37,13 +35,21 @@ class createCodeudorActionClass extends controllerClass implements controllerAct
             
             
         );
-        codeudorTableClass::insert($data);
-        session::getInstance()->setSuccess('El codeudor fue creado exitosamente');
+        
+        $ids=array(
+            codeudorTableClass::ID => request::getInstance()->getPost(codeudorTableClass::getNameField(codeudorTableClass::ID,true)), 
+             
+             
+         );
+
+      session::getInstance()->setSuccess('El codeudor fue actulizado exitosamente');
+        // $this->defineView('cliente', 'prestamo', session::getInstance()->getFormatOutput());
         $this->defineView('index', 'prestamo', session::getInstance()->getFormatOutput());
-      } else {
-        //inputBarrio
-        routing::getInstance()->redirect('prestamo', 'createCodeudor');
+        codeudorTableClass::update($ids, $data);
+        
       }
+
+      routing::getInstance()->redirect('default', 'index');
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);
       routing::getInstance()->forward('shfSecurity', 'exception');
@@ -51,6 +57,3 @@ class createCodeudorActionClass extends controllerClass implements controllerAct
   }
 
 }
-
-
- 

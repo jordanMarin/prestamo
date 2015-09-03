@@ -17,7 +17,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
   public function execute() {
     
-    session::getInstance()->setError('HOLA ERRRO', 'hola');
+   // session::getInstance()->setError('HOLA ERRRO', 'hola');
     
     try {
       $fields = array(

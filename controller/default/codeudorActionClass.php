@@ -31,7 +31,7 @@ class codeudorActionClass extends controllerClass implements controllerActionInt
           
           );
           $this-> objcodeudor= codeudorTableClass::getAll($fields,true);
-          $this->defineView($codeudor, $default,session::getInstance()->getFormatOutput());
+          $this->defineView($codeudor, $prestamo,session::getInstance()->getFormatOutput());
       } catch (PDOException $exc) {
           echo $exc->getMessage();
           echo'br';
@@ -42,3 +42,4 @@ class codeudorActionClass extends controllerClass implements controllerActionInt
   }
 
 }
+

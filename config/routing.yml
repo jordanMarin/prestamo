@@ -5,6 +5,94 @@ homepage:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
 
+
+default_insert:
+  url:    /default/insert
+  param:  { module: default, action: insert, format: html }
+  load:
+   - model/base/usuarioBaseTableClass.php
+   - model/usuarioTableClass.php
+
+
+default_update:
+  url:    /default/update
+  param:  { module: default, action: update, format: html }
+  load:
+   - model/base/usuarioBaseTableClass.php
+   - model/usuarioTableClass.php
+   
+
+default_edit:
+  url:    /default/edit
+  param:  { module: default, action: edit, format: html }
+  load:
+   - model/base/usuarioBaseTableClass.php
+   - model/usuarioTableClass.php   
+   
+
+default_deleteSelect:
+  url:    /default/deleteSelect
+  param:  { module: default, action: deleteSelect, format: html }
+  load:
+   - model/base/usuarioBaseTableClass.php
+   - model/usuarioTableClass.php   
+
+
+default_edit:
+  url:    /default/editEmpleado
+  param:  { module: prestamo, action: editEmpleado, format: html }
+  load:
+   - model/base/usuarioBaseTableClass.php
+   - model/usuarioTableClass.php
+   - model/base/empleadoBaseTableClass.php
+   - model/empleadoTableClass.php
+   - model/base/cargoBaseTableClass.php
+   - model/cargoTableClass.php
+   
+default_update:
+  url:    /prestamo/updateEmpleado
+  param:  { module: prestamo, action: updateEmpleado, format: html }
+  load:
+   - model/base/usuarioBaseTableClass.php
+   - model/usuarioTableClass.php
+   - model/base/empleadoBaseTableClass.php
+   - model/empleadoTableClass.php   
+   
+   
+   
+   
+edit_cliente:
+  url:    /prestamo/editCliente
+  param:  { module: prestamo, action: editCliente, format: html }
+  load:
+   - model/base/usuarioBaseTableClass.php
+   - model/usuarioTableClass.php
+   - model/base/clienteBaseTableClass.php
+   - model/clienteTableClass.php
+   - model/base/tipo_documentoBaseTableClass.php
+   - model/tipo_documentoTableClass.php
+   - model/base/localidadBaseTableClass.php
+   - model/localidadTableClass.php
+
+update_cliente:
+  url:    /prestamo/updateCliente
+  param:  { module: prestamo, action: updateCliente, format: html }
+  load:
+   - model/base/usuarioBaseTableClass.php
+   - model/usuarioTableClass.php
+   - model/base/clienteBaseTableClass.php
+   - model/clienteTableClass.php 
+   
+   
+ 
+#edit_cliente:
+#  url:    /prestamo/editCliente
+#  param:  { module: prestamo, action: editCliente, format: html }
+#  load:
+#   - model/base/usuarioBaseTableClass.php
+#   - model/usuarioTableClass.php
+#   - model/base/clienteBaseTableClass.php
+#   - model/clienteTableClass.php  
 ##-------------------------- shfSecurity --------------------------##
 
 
@@ -113,8 +201,8 @@ default_index:
     - model/base/barrioBaseTableClass.php
     - model/barrioTableClass.php
 
-prestamo_cargo_insertar:
-  url:    /prestamo/insertar/cargo
+prestamo_cargo:
+  url:    /prestamo/cargo
   param:  { module: prestamo, action: formInsertarCargo, format: html }
   load:
     - model/base/cargoBaseTableClass.php
@@ -148,20 +236,61 @@ prestamo_codeudor_create:
   load:
     - model/base/codeudorBaseTableClass.php
     - model/codeudorTableClass.php
-    - libs/validator/prestamo/createcodeudorValidatorClass.php
+    - libs/validator/prestamo/createCodeudorValidatorClass.php
     - model/base/tipo_documentoBaseTableClass.php
     - model/tipo_documentoTableClass.php
     - model/base/localidadBaseTableClass.php
     - model/localidadTableClass.php
-    - libs/validator/prestamo/createCodeudorValidatorClass.php
     
-       
+    
 prestamo_empleado:
-   url:    /prestamo/empleado
-   param:  { module: prestamo, action: empleado, format: html }
-   load:
+  url:   /prestamo/empleado
+  param:  { module: prestamo, action: empleado, format: html }
+  load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/cargoBaseTableClass.php
+    - model/cargoTableClass.php
+prestamo_empleado_create:
+  url:    /prestamo/crear/empleado
+  param:  { module: prestamo, action: createEmpleado, format: html }
+  load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - libs/validator/prestamo/createEmpleadoValidatorClass.php
+    - model/base/cargoBaseTableClass.php
+    - model/cargoTableClass.php  
+
  
-   
+prestamo_negocio:
+   url:    /prestamo/negocio
+   param:  { module: prestamo, action:  negocio, format: html }
+   load:
+     
+    - model/base/negocioBaseTableClass.php
+    - model/negocioTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+ 
+prestamo_negocio_create:
+   url:    /prestamo/crear/negocio
+   param:  { module: prestamo, action:  createNegocio, format: html }
+   load:
+     
+    - model/base/negocioBaseTableClass.php
+    - model/negocioTableClass.php
+    - libs/validator/prestamo/createNegocioValidatorClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
    
 prestamo_formato_de_prestamo:
   url:    /prestamo/formato_de_prestamo
@@ -184,6 +313,20 @@ prestamo_ paz_y_salvo:
    url:    /prestamo/paz_y_salvo
    param:  { module: prestamo, action:   paz_y_salvo, format: html }
    load:
+
+
+Listado_empleado:
+   url:    /listado/empleado
+   param:  { module: prestamo, action: listadoEmpleado, format: html }
+   load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php 
+
+
+
+
 
 #    
 #    default_ planilla:
@@ -209,8 +352,7 @@ prestamo_ paz_y_salvo:
 #    - model/ tipo_documentoTableClass.php
 #    
 #    
-#    
-#    
+
 #    
 #    
 #   

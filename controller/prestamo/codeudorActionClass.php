@@ -17,6 +17,18 @@ class codeudorActionClass extends controllerClass implements controllerActionInt
 
   public function execute() {
     try {
+//        $fields = array(
+//          codeudorBaseTableClass::ID,
+//          codeudorBaseTableClass::TIPO_DOCUMENTO_ID,
+//          codeudorBaseTableClass::NUMERO_IDENTIFICACION,
+//          codeudorBaseTableClass::NOMBRE_CODEUDOR,
+//          codeudorBaseTableClass::APELL_CODEUDOR,
+//          codeudorBaseTableClass::TELEFONO_CODEUDOR,
+//          codeudorBaseTableClass::MOVIL_CODEUDOR,
+//          codeudorBaseTableClass::DIRECCION_CODEUDOR,
+//          codeudorBaseTableClass::LOCALIDAD_ID,
+//      );
+
       $fields = array(
           tipo_documentoTableClass::ID,
           tipo_documentoTableClass::DESC_DOCUMENTO
@@ -28,7 +40,7 @@ class codeudorActionClass extends controllerClass implements controllerActionInt
 
       $this->objLocalidad = localidadTableClass::getAll($fields1);
       $this->objTipo_documento = tipo_documentoTableClass::getAll($fields);
-      $this->defineView('codeudor', 'prestamo', session::getInstance()->getFormatOutput());
+      $this->defineView('fromCodeudor','prestamo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);
       routing::getInstance()->forward('shfSecurity', 'exception');

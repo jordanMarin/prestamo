@@ -3,12 +3,15 @@
 <?php use mvc\request\requestClass as request ?>
 <?php use mvc\view\viewClass as view ?>
 <form class="form-horizontal ibody" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('prestamo', 'createCliente') ?>">
+   <?php if (isset($objUsuario) == true): ?>
+            <input name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::ID, true) ?>" value="<?php echo $objUsuario[0]->id ?>" type="hidden">
+          <?php endif ?>
   <fieldset>
     <legend>Usuario</legend>
     
     <label for="inputUsuario" class="col-sm-2 control-label">Usuario</label>
       <div class="col-sm-10">
-        <input value="" type="text" class="form-control" id="inputUsuario" name="inputUsuario" placeholder="Digite usuario">
+        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) : (((isset($objUsuario) == true) ? $objUsuario[0]->user_name : '')) ?>" type="text" class="form-control" id="inputUsuario" name="inputUsuario" placeholder="Digite usuario">
       </div>
     
     <label for="inputPassword" class="col-sm-2 control-label">Contraseña</label>
@@ -54,7 +57,7 @@
     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputnombre_cliente')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputnombre_cliente" class="col-sm-2 control-label">NOMBRE</label>
       <div class="col-sm-10">
-        <input value="<?php echo (request::getInstance()->hasPost('inputnombre_cliente')) ? request::getInstance()->getPost('inputnombre_cliente') : '' ?>" type="text" class="form-control" id="inputnombre_cliente" name="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE_CLIENTE, true) ?>" placeholder="Digite  nombre cliente">
+        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::NOMBRE_CLIENTE, TRUE)) : (((isset($objCliente) == true) ? $objCliente[0]->NOMBRE_CLIENTE: ''))?>" type="text" class="form-control" id="inputnombre_cliente" name="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE_CLIENTE, true) ?>" placeholder="Digite  nombre cliente">
         <?php if(session::getInstance()->hasFlash('inputnombre_cliente')): ?>
         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
         <?php endif ?>
@@ -64,7 +67,7 @@
     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputapellido_cliente')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputapellido_cliente" class="col-sm-2 control-label">APELLIDO</label>
       <div class="col-sm-10">
-        <input value="<?php echo (request::getInstance()->hasPost('inputapellido_cliente')) ? request::getInstance()->getPost('inputapellido_cliente') : '' ?>" type="text" class="form-control" id="inputapellido_cliente" name="<?php echo clienteTableClass::getNameField(clienteTableClass::APELLIDO_CLIENTE, true) ?>" placeholder="Digite apellido cliente">
+        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::APELLIDO_CLIENTE, TRUE)) : (((isset($objCliente) == true) ? $objCliente[0]->APELLIDO_CLIENTE: ''))?>" type="text" class="form-control" id="inputapellido_cliente" name="<?php echo clienteTableClass::getNameField(clienteTableClass::APELLIDO_CLIENTE, true) ?>" placeholder="Digite apellido cliente">
         <?php if(session::getInstance()->hasFlash('inputapellido_cliente')): ?>
         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
         <?php endif ?>
@@ -76,7 +79,7 @@
     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputcelular_cliente')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputcelular_cliente" class="col-sm-2 control-label">CELULAR</label>
       <div class="col-sm-10">
-        <input value="<?php echo (request::getInstance()->hasPost('inputcelular_cliente')) ? request::getInstance()->getPost('inputcelular_cliente') : '' ?>" type="text" class="form-control" id="inputcelular_cliente" name="<?php echo clienteTableClass::getNameField(clienteTableClass::CELULAR_CLIENTE, true) ?>" placeholder="Digite Numero  celular">
+        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CELULAR_CLIENTE, TRUE)) : (((isset($objCliente) == true) ? $objCliente[0]->CELULAR_CLIENTE: ''))?>" type="text" class="form-control" id="inputcelular_cliente" name="<?php echo clienteTableClass::getNameField(clienteTableClass::CELULAR_CLIENTE, true) ?>" placeholder="Digite Numero  celular">
         <?php if(session::getInstance()->hasFlash('inputcelular_cliente')): ?>
         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
         <?php endif ?>
@@ -87,7 +90,7 @@
     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputtelefono_cliente')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputtelefono_cliente" class="col-sm-2 control-label">TELEFONO</label>
       <div class="col-sm-10">
-        <input value="<?php echo (request::getInstance()->hasPost('inputtelefono_cliente')) ? request::getInstance()->getPost('inputtelefono_cliente') : '' ?>" type="text" class="form-control" id="inputtelefono_cliente" name="<?php echo clienteTableClass::getNameField(clienteTableClass::TELEFONO_CLIENTE, true) ?>" placeholder="Digite Numero telefono">
+        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CELULAR_CLIENTE, TRUE)) : (((isset($objCliente) == true) ? $objCliente[0]->CELULAR_CLIENTE: ''))?>"  type="text" class="form-control" id="inputtelefono_cliente" name="<?php echo clienteTableClass::getNameField(clienteTableClass::TELEFONO_CLIENTE, true) ?>" placeholder="Digite Numero telefono">
         <?php if(session::getInstance()->hasFlash('inputtelefono_cliente')): ?>
         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
         <?php endif ?>
@@ -98,7 +101,7 @@
     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputcorreo_cliente')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputcorreo_cliente" class="col-sm-2 control-label">CORREO</label>
       <div class="col-sm-10">
-        <input value="<?php echo (request::getInstance()->hasPost('inputcorreo_cliente')) ? request::getInstance()->getPost('inputcorreo_cliente') : '' ?>" type="text" class="form-control" id="inputcorreo_cliente" name="<?php echo clienteTableClass::getNameField(clienteTableClass::CORREO_CLIENTE, true) ?>" placeholder="Digite Correo">
+        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CELULAR_CLIENTE, TRUE)) : (((isset($objCliente) == true) ? $objCliente[0]->CELULAR_CLIENTE: ''))?>" type="text" class="form-control" id="inputcorreo_cliente" name="<?php echo clienteTableClass::getNameField(clienteTableClass::CORREO_CLIENTE, true) ?>" placeholder="Digite Correo">
         <?php if(session::getInstance()->hasFlash('inputcorreo_cliente')): ?>
         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
         <?php endif ?>
@@ -108,7 +111,7 @@
     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputdireccion_cliente')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputdireccion_cliente" class="col-sm-2 control-label">DIRECCION</label>
       <div class="col-sm-10">
-        <input value="<?php echo (request::getInstance()->hasPost('inputdireccion_cliente')) ? request::getInstance()->getPost('inputcorreo_cliente') : '' ?>" type="text" class="form-control" id="inputdireccion_cliente" name="<?php echo clienteTableClass::getNameField(clienteTableClass::DIRECCION_CLIENTE, true) ?>" placeholder="Digite La direccion">
+        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CELULAR_CLIENTE, TRUE)) : (((isset($objCliente) == true) ? $objCliente[0]->CELULAR_CLIENTE: ''))?>" type="text" class="form-control" id="inputdireccion_cliente" name="<?php echo clienteTableClass::getNameField(clienteTableClass::DIRECCION_CLIENTE, true) ?>" placeholder="Digite La direccion">
         <?php if(session::getInstance()->hasFlash('inputdireccion_cliente')): ?>
         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
         <?php endif ?>

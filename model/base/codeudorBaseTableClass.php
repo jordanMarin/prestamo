@@ -32,7 +32,7 @@ class codeudorBaseTableClass extends tableBaseClass {
 
 
   const ID = 'id';
-  const TIPO_DOCUMENTO_ID= 'tipo_documento';
+  const TIPO_DOCUMENTO_ID= 'tipo_documento_id';
   const NUMERO_IDENTIFICACION= 'numero_identificacion';
   const NOMBRE_CODEUDOR= 'nombre_codeudor';
   const NOMBRE_CODEUDOR_LENGTH = 100;
@@ -46,11 +46,11 @@ class codeudorBaseTableClass extends tableBaseClass {
   const DIRECCION_CODEUDOR_LENGTH = 100;
   const CORREO_CODEUDOR= 'correo_codeudor';
   const CORREO_CODEUDOR_LENGTH = 60;
-  const LOCALIDAD_ID= 'localidad';
+  const LOCALIDAD_ID= 'localidad_id';
   const ACTIVED = 'actived';
   const CREATED_AT = 'created_at';
   const DELETED_AT = 'deleted_at';
-   const UPDATED_AT = 'updated_at';
+  const UPDATED_AT = 'updated_at';
 
   
   

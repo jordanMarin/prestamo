@@ -13,7 +13,7 @@ use mvc\i18n\i18nClass as i18n;
  *
  * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
  */
-class editActionClass extends controllerClass implements controllerActionInterface {
+class editEmpleadoActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
@@ -26,8 +26,35 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         $where = array(
             usuarioTableClass::ID => request::getInstance()->getRequest(usuarioTableClass::ID)
         );
+        
+         $fields1 = array(
+         empleadoTableClass::ID,
+         empleadoTableClass::NOMBRE,
+         empleadoTableClass::APELLIDO_EMPLEADO,
+         empleadoTableClass::DIRECCION_EMPLEADO,
+         empleadoTableClass::TELEFONO_EMPLEADO,
+         empleadoTableClass::MOVIL_EMPELADO,
+         empleadoTableClass::CORREO_EMPLEADO,
+         empleadoTableClass::CARGO_ID
+             
+        );
+        
+          $where1 = array(
+            empleadoTableClass::ID => request::getInstance()->getRequest(usuarioTableClass::ID)
+        );
+        
+            
+      $fields2 = array(
+      cargoTableClass::ID,
+      cargoTableClass::DESC_CARGO,
+      
+        
+      );
+
+         $this->objCargo = cargoTableClass::getAll($fields2);
         $this->objUsuario = usuarioTableClass::getAll($fields, true, null, null, null, null, $where);
-        $this->defineView('edit', 'default', session::getInstance()->getFormatOutput());
+        $this->objEmpleado= empleadoTableClass::getAll($fields1,true, null, null, null, null, $where1);
+        $this->defineView('formEmpleado', 'prestamo', session::getInstance()->getFormatOutput());
       } else {
         routing::getInstance()->redirect('prestamo', 'insert');
       }

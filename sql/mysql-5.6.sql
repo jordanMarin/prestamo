@@ -139,9 +139,17 @@ BEGIN;
 INSERT INTO usuario (user_name, password, actived, last_login_at) VALUES ('admin', '202cb962ac59075b964b07152d234b70', 1, null);
 COMMIT;
 
+
+BEGIN;
+INSERT INTO empleado (actived,nombre,apellido_empleado,direccion_empleado,telefono_empleado,movil_empleado,correo_empleado,cargo_id) VALUES (TRUE, 'JORDAN','marin','diagonal 26','404322','31313232','aldany@hhjj',6,1);
+COMMIT;
 -- ----------------------------
 --  Records of "usuario_credencial"
 -- ----------------------------
 BEGIN;
 INSERT INTO usuario_credencial (usuario_id, credencial_id) VALUES (1, 1);
 COMMIT;
+
+
+
+

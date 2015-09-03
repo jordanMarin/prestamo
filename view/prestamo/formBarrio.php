@@ -42,5 +42,11 @@
         </div>
       </div>
       
+    <div class="form-group text-right">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-primary">modificar</button>
+          <a href="#" class="btn btn-default">Cancelar</a>
+        </div>
+      </div>
   </fieldset>
 </form>

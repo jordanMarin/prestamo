@@ -17,6 +17,23 @@ class negocioActionClass extends controllerClass implements controllerActionInte
 
   public function execute() {
     try {
+      
+      $fields = array(
+          negocioBaseTableClass::ID,
+          negocioBaseTableClass::NOMBRE_NEGOCIO,
+          negocioBaseTableClass::DIRECCION_NEGOCIO,
+          negocioBaseTableClass::TELEFONO_NEGOCIO,
+          negocioBaseTableClass::VALOR_INGRESO_NEGOCIO,
+          negocioBaseTableClass::CLIENTE_ID
+      );
+
+      $fields1 = array(
+        clienteTableClass::ID,
+       
+      
+      );
+
+      $this->objCliente = clienteTableClass::getAll($fields1);
 
       $this->defineView('negocio','prestamo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

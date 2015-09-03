@@ -11,9 +11,9 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Julian Lasso <aldany29@hotmail.com>
  */
-class editActionClass extends controllerClass implements controllerActionInterface {
+class editClienteActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
@@ -26,8 +26,47 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         $where = array(
             usuarioTableClass::ID => request::getInstance()->getRequest(usuarioTableClass::ID)
         );
+        
+         $fields1 = array(
+        
+            clienteTableClass::ID,   
+            clienteTableClass::TIPO_DOCUMENTO_ID,
+            clienteTableClass::NUMERO_IDENTIFICACION,
+            clienteTableClass::NOMBRE_CLIENTE,
+            clienteTableClass::APELLIDO_CLIENTE,
+            clienteTableClass::CELULAR_CLIENTE, 
+            clienteTableClass::TELEFONO_CLIENTE,
+            clienteTableClass::CORREO_CLIENTE, 
+            clienteTableClass::DIRECCION_CLIENTE,
+            clienteTableClass::FECHA_NACIMIENTO_CLIENTE,
+            clienteTableClass::LOCALIDAD_ID, 
+            
+             
+        );
+        
+          $where1 = array(
+          clienteTableClass::ID => request::getInstance()->getRequest(usuarioTableClass::ID)
+        );
+        
+            
+      $fields2 = array(
+      localidadTableClass::ID,
+      localidadTableClass::NOMBRE,
+      
+        
+      );
+      
+       $fields3 = array(
+       tipo_documentoTableClass::ID,
+       tipo_documentoTableClass::DESC_DOCUMENTO,
+           
+           
+         );  
+        $this->objtipo_documento=tipo_documentoTableClass::getAll($fields3);
+        $this->objLocalidad = localidadTableClass::getAll($fields2);
         $this->objUsuario = usuarioTableClass::getAll($fields, true, null, null, null, null, $where);
-        $this->defineView('edit', 'default', session::getInstance()->getFormatOutput());
+        $this->objCliente= clienteTableClass::getAll($fields1,true, null, null, null, null, $where1);
+        $this->defineView('formCliente', 'prestamo', session::getInstance()->getFormatOutput());
       } else {
         routing::getInstance()->redirect('prestamo', 'insert');
       }

@@ -13,21 +13,45 @@ use mvc\i18n\i18nClass as i18n;
  *
  * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
  */
-class editActionClass extends controllerClass implements controllerActionInterface {
+class editCodeudorActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
-      if (request::getInstance()->hasRequest(usuarioTableClass::ID)) {
-        $fields = array(
-            usuarioTableClass::ID,
-            usuarioTableClass::USER,
-            usuarioTableClass::PASSWORD
+      if (request::getInstance()->hasRequest(codeudorTableClass::ID)) {
+       $fields = array(
+             
+          codeudorTableClass::ID,
+          codeudorTableClass::TIPO_DOCUMENTO_ID,
+          codeudorTableClass::NUMERO_IDENTIFICACION,
+          codeudorTableClass::NOMBRE_CODEUDOR,
+          codeudorTableClass::APELL_CODEUDOR,
+          codeudorTableClass::TELEFONO_CODEUDOR,
+          codeudorTableClass::MOVIL_CODEUDOR,
+          codeudorTableClass::DIRECCION_CODEUDOR,
+          codeudorTableClass::LOCALIDAD_ID     
+
         );
         $where = array(
-            usuarioTableClass::ID => request::getInstance()->getRequest(usuarioTableClass::ID)
+            codeudorTableClass::ID => request::getInstance()->getRequest(codeudorTableClass::ID)
         );
-        $this->objUsuario = usuarioTableClass::getAll($fields, true, null, null, null, null, $where);
-        $this->defineView('edit', 'default', session::getInstance()->getFormatOutput());
+         $fields1 = array(
+      cargoTableClass::ID,
+      cargoTableClass::DESC_CARGO,
+      
+        
+      );
+
+          $fields2 = array(
+      cargoTableClass::ID,
+      cargoTableClass::DESC_CARGO,
+      
+        
+      );
+
+         $this->objTipo_documento =  tipo_documentoTableClass::getAll($fields2);
+        $this->objLocalidad =  localidadTableClass::getAll($fields1);
+        $this->objCodeudor = codeudorTableClass::getAll($fields, true, null, null, null, null, $where);
+        $this->defineView('fromCodeudor', 'prestamo', session::getInstance()->getFormatOutput());
       } else {
         routing::getInstance()->redirect('prestamo', 'insert');
       }

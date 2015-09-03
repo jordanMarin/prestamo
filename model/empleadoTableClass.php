@@ -13,6 +13,6 @@ use mvc\config\configClass as config;
  *
  * @author Jordan Marin
  */
-class empleadoTableClassTableClass  extends empleadoBaseTableClass{
+class empleadoTableClass  extends empleadoBaseTableClass{
     //put your code here
 }

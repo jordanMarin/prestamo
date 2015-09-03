@@ -19,6 +19,13 @@ shfSecurity:
     stylesheet:
       - signin.css
 
+prestamo:
+  empleado:
+     stylesheet:
+      - ejemplo.css
+
+
+
 default:
   index:
     javascript:
@@ -46,10 +53,7 @@ prestamo:
   codeudor:
      stylesheet:
       - codeudor.css
-  prestamo:
-  empleado:
-     stylesheet:
-      - empleado.css
+
       
   prestamo:
   formato_de_prestamo:
@@ -72,5 +76,8 @@ prestamo:
      stylesheet:
       - paz_y_salvo.css    
       
-    
+prestamo:
+  editEmpleado:
+     stylesheet:
+      - paz_y_salvo.css
     
