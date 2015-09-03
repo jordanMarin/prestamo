@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="UTF-8"?><Db flnm="recaudador3" nm="recaudador3" ver="1.3.4">
+  <VerLbl/>
+  <VerNotes/>
+  <DefTblOpts/>
+  <DocFolder>/Applications/MAMP/htdocs/prestamo/sql</DocFolder>
+  <Sch Cm="standard public schema" nm="public">
+    <Tbl UsSo="1" nm="banco">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkbanco"/>
+      <Cl au="1" df="nextval('banco_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="barrio">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkbarrio"/>
+      <Cl au="1" df="nextval('barrio_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="true" nm="actived" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = activo ; false = desactivado</Cm>
+      </Cl>
+      <Cl au="0" df="now()" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre_barrio" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="localidad_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_barrio_localidad" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="localidad" oe="1" sch="public" zr="1"/>
+        <CdTb mn="1" nm="barrio" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="localidad_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="bitacora">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkbitacora"/>
+      <Cl au="1" df="nextval('bitacora_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="fecha" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="usuario_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="accion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tabla" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="65" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="registro" nu="1">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_bitacora_usuario" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="usuario" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bitacora" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="usuario_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="cliente">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkcliente"/>
+      <Cl au="1" df="nextval('cliente_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="usuario_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="localidad_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tipo_documento_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="true" nm="actived" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = activo ; false = desactivado</Cm>
+      </Cl>
+      <Cl au="0" df="now()" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="identificacion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="60" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="apellidos" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="60" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="celular" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="12" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="telefono" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="15" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="correo" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="direccion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="200" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_nacimiento" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_cliente_localidad" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="localidad" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="cliente" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="localidad_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_cliente_tipo_documento" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="tipo_documento" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="cliente" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="tipo_documento_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_cliente_usuario" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="usuario" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="cliente" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="usuario_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="cliente_usuario_id_Idx" spa="0" unq="1">
+        <ClNs>usuario_id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="codeudor">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkcodeudor"/>
+      <Cl au="1" df="nextval('codeudor_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="localidad_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tipo_documento_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="true" nm="actived" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = activo ; false = desactivado</Cm>
+      </Cl>
+      <Cl au="0" df="now()" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="identificacion" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="apellidos" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="telefono" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="15" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="movil" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="13" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="direccion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="correo" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="60" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_codeudor_localidad" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="localidad" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="codeudor" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="localidad_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_codeudor_tipo_documento" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="tipo_documento" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="codeudor" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="tipo_documento_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="credencial">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkcredencial"/>
+      <Cl au="1" df="nextval('credencial_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="true" nm="actived" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = activo ; false = desactivado</Cm>
+      </Cl>
+      <Cl au="0" df="now()" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="empleado">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkempleado"/>
+      <Cl au="1" df="nextval('empleado_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="usuario_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tipo_documento_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="true" nm="actived" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = activo ; false = desactivado</Cm>
+      </Cl>
+      <Cl au="0" df="now()" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="identificacion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="apellidos" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="direccion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="telefono" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="15" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="movil" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="12" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="correo" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_empleado_tipo_documento" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="tipo_documento" oe="1" sch="public" zr="1"/>
+        <CdTb mn="1" nm="empleado" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="tipo_documento_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_empleado_usuario" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="usuario" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="empleado" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="usuario_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="empleado_usuario_id_Idx" spa="0" unq="1">
+        <ClNs>usuario_id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="formato_prestamo">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkformato_prestamo"/>
+      <Cl au="1" df="nextval('formato_de_prestamo_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cliente_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="codeudor_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="true" nm="actived" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = activo ; false = desactivado</Cm>
+      </Cl>
+      <Cl au="0" df="now()" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="monto_capital" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="numero_cuotas" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="banco_id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tipo_cuenta_bancaria" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>t = ahorro | f = corriente</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="num_cuenta_bancaria" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="30" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="false" nm="aprovado" nu="1">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>FALSE = no aprovado | TRUE = aprobado</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="latitud" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="longitud" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_formato_de_prestamo_cliente" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="cliente" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="formato_prestamo" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="cliente_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_formato_de_prestamo_codeudor" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="codeudor" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="formato_prestamo" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="codeudor_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_formato_prestamo_banco" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="banco" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="formato_prestamo" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="banco_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="localidad">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pklocalidad"/>
+      <Cl au="1" df="nextval('localidad_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="true" nm="actived" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = activo ; false = desactivado</Cm>
+      </Cl>
+      <Cl au="0" df="now()" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="localidad_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_localidad_localidad" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="localidad" oe="1" sch="public" zr="1"/>
+        <CdTb mn="1" nm="localidad" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="localidad_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="negocio">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pknegocio"/>
+      <Cl au="1" df="nextval('negocio_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cliente_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="true" nm="actived" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = activo ; false = desactivado</Cm>
+      </Cl>
+      <Cl au="0" df="now()" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="direccion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="telefono" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="15" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ingresos_mensual" nu="0">
+        <DT arr="0" ds="Numeric" en="" id="2" ln="12" sc="0" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_negosio_cliente" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="cliente" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="negocio" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="cliente_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="paz_y_salvo">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkpaz_y_salvo"/>
+      <Cl au="1" df="nextval('paz_y_salvo_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="prestamo_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="pdf" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="37" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_paz_y_salvo_prestamo" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="prestamo" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="paz_y_salvo" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="prestamo_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="planilla">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkplanilla"/>
+      <Cl au="1" df="nextval('planilla_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="prestamo_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_recogida" nu="1">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="valor_recaudo" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observaciones" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="latitud" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="longitud" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_planilla_empleado" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="1"/>
+        <CdTb mn="1" nm="planilla" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="empleado_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_planilla_prestamo" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="prestamo" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="planilla" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="prestamo_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="prestamo">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkprestamo"/>
+      <Cl au="1" df="nextval('prestamo_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="true" nm="actived" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = activo | false = inactivo</Cm>
+      </Cl>
+      <Cl au="0" df="now()" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="formato_de_prestamo_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tiempo_cuota" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Cada cauntos días se recoge el dinero</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="monto_cuota" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+        <Cm>Cuanto se recoge por cuota</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_inicio" nu="0">
+        <DT arr="0" ds="Date" en="" id="91" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Cuando empieza la deuda</Cm>
+      </Cl>
+      <Fk deAc="3" nm="fk_prestamo_formato_de_prestamo" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="formato_prestamo" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="prestamo" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="formato_de_prestamo_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="recordar_me">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkrecordar_me"/>
+      <Cl au="1" df="nextval('sesion_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="usuario_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="hash_cookie" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="32" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ip_address" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="36" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_sesion_usuario" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="usuario" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="recordar_me" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="usuario_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="tipo_documento">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pktipo_documento"/>
+      <Cl au="1" df="nextval('tipo_documento_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="true" nm="actived" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = activo ; false = desactivado</Cm>
+      </Cl>
+      <Cl au="0" df="now()" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="desc_documento" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="usuario">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkusuario"/>
+      <Cl au="1" df="nextval('usuario_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="true" nm="actived" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = activo ; false = desactivado</Cm>
+      </Cl>
+      <Cl au="0" df="now()" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="password" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="32" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="last_login_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Idx clu="0" ftx="0" nm="usuario_usuario_Idx" spa="0" unq="1">
+        <ClNs>user_name</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="usuario_usuario_password_Idx" spa="0" unq="0">
+        <ClNs>user_name, password</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="usuario_credencial">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkusuario_credencial"/>
+      <Cl au="1" df="nextval('usuario_credencial_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="usuario_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="credencial_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_usuario_credencial_credencial" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="credencial" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="usuario_credencial" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="credencial_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_usuario_credencial_usuario" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="usuario" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="usuario_credencial" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="usuario_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="usuario_credencial_usuario_id_credencial_id_Idx" spa="0" unq="1">
+        <ClNs>usuario_id, credencial_id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Seq incr="1" nm="banco_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="barrio_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bitacora_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="cargo_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="cliente_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="codeudor_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="credencial_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="empleado_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="formato_de_prestamo_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="localidad_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="negocio_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="paz_y_salvo_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="planilla_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="prestamo_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="sesion_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="tipo_documento_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="usuario_credencial_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="usuario_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <CustomTypes/>
+  </Sch>
+  <Dgm nm="public">
+    <RnCf ClkAct="true" FtSz="11" lkStgy="OffsetDirect" zm="1.0">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="1"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="1"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="0"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <DiaProps>
+      <Show AllCols="1" FkCols="1" FkNms="0" PkCols="1"/>
+      <ErNotation>DbwErNotation</ErNotation>
+      <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
+      <svg path=""/>
+    </DiaProps>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="barrio" x="760" y="932"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="bitacora" x="57" y="308"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="cliente" x="679" y="392"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="codeudor" x="1065" y="697"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="credencial" x="399" y="37"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="empleado" x="420" y="669"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="formato_prestamo" x="1148" y="205"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="localidad" x="767" y="739"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="negocio" x="651" y="55"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="planilla" x="1274" y="917"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="prestamo" x="1297" y="488"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="recordar_me" x="270" y="476"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="tipo_documento" x="832" y="226"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="usuario" x="392" y="244"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="usuario_credencial" x="62" y="129"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="banco" x="1280" y="43"/>
+    <TbGl bkCl="ff6666ff" sch="public" tbl="paz_y_salvo" x="1439" y="712"/>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.barrio.fk_barrio_localidad" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="public.bitacora.fk_bitacora_usuario" parentEdge="SOUTH" positioner="TwoLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.cliente.fk_cliente_localidad" parentEdge="WEST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.cliente.fk_cliente_tipo_documento" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.cliente.fk_cliente_usuario" parentEdge="EAST" positioner="TwoLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.codeudor.fk_codeudor_localidad" parentEdge="NORTH" positioner="TwoLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.codeudor.fk_codeudor_tipo_documento" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.empleado.fk_empleado_tipo_documento" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="public.empleado.fk_empleado_usuario" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.formato_prestamo.fk_formato_de_prestamo_cliente" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="public.formato_prestamo.fk_formato_de_prestamo_codeudor" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.formato_prestamo.fk_formato_prestamo_banco" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.localidad.fk_localidad_localidad" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="public.negocio.fk_negosio_cliente" parentEdge="WEST" positioner="OneLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.paz_y_salvo.fk_paz_y_salvo_prestamo" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.planilla.fk_planilla_empleado" parentEdge="NORTH" positioner="TwoLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.planilla.fk_planilla_prestamo" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="SOUTH" nm="public.prestamo.fk_prestamo_formato_de_prestamo" parentEdge="NORTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="public.recordar_me.fk_sesion_usuario" parentEdge="SOUTH" positioner="TwoLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="WEST" nm="public.usuario_credencial.fk_usuario_credencial_credencial" parentEdge="EAST" positioner="OneLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="EAST" nm="public.usuario_credencial.fk_usuario_credencial_usuario" parentEdge="SOUTH" positioner="TwoLineUserLinkPositioner">
+      <positionableLines/>
+    </FkGl>
+    <Notes/>
+    <Zones/>
+  </Dgm>
+  <RnmMgr NxRnmId="28">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="empleado" SupCls="Schema" SupNme="public">
+      <Rnm id="9" nNm="apellidos" oNm="apellido"/>
+      <Rnm id="1" nNm="apellido" oNm="apellido_empleado"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="empleado" SupCls="Schema" SupNme="public">
+      <Rnm id="2" nNm="direccion" oNm="direccion_empleado"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="empleado" SupCls="Schema" SupNme="public">
+      <Rnm id="3" nNm="telefono" oNm="telefono_empleado"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="empleado" SupCls="Schema" SupNme="public">
+      <Rnm id="4" nNm="movil" oNm="movil_empelado"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="empleado" SupCls="Schema" SupNme="public">
+      <Rnm id="5" nNm="correo" oNm="correo_empleado"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="cliente" SupCls="Schema" SupNme="public">
+      <Rnm id="6" nNm="identificacion" oNm="numero_identificacion"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="cliente" SupCls="Schema" SupNme="public">
+      <Rnm id="7" nNm="nombre" oNm="nombre_cliente"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="cliente" SupCls="Schema" SupNme="public">
+      <Rnm id="8" nNm="apellidos" oNm="apellido_cliente"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="cliente" SupCls="Schema" SupNme="public">
+      <Rnm id="10" nNm="celular" oNm="celular_cliente"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="cliente" SupCls="Schema" SupNme="public">
+      <Rnm id="11" nNm="telefono" oNm="telefono_cliente"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="cliente" SupCls="Schema" SupNme="public">
+      <Rnm id="12" nNm="correo" oNm="correo_cliente"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="cliente" SupCls="Schema" SupNme="public">
+      <Rnm id="13" nNm="direccion" oNm="direccion_cliente"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="cliente" SupCls="Schema" SupNme="public">
+      <Rnm id="14" nNm="fecha_nacimiento" oNm="fecha_nacimiento_cliente"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="negocio" SupCls="Schema" SupNme="public">
+      <Rnm id="15" nNm="direccion" oNm="direccion_negocio"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="negocio" SupCls="Schema" SupNme="public">
+      <Rnm id="16" nNm="nombre" oNm="nombre_negocio"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="negocio" SupCls="Schema" SupNme="public">
+      <Rnm id="17" nNm="telefono" oNm="telefono_negocio"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="negocio" SupCls="Schema" SupNme="public">
+      <Rnm id="18" nNm="ingresos_mensual" oNm="valor_ingreso_negocio"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="codeudor" SupCls="Schema" SupNme="public">
+      <Rnm id="19" nNm="identificacion" oNm="numero_identificacion"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="codeudor" SupCls="Schema" SupNme="public">
+      <Rnm id="20" nNm="nombre" oNm="nombre_codeudor"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="codeudor" SupCls="Schema" SupNme="public">
+      <Rnm id="21" nNm="apellidos" oNm="apell_codeudor"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="codeudor" SupCls="Schema" SupNme="public">
+      <Rnm id="22" nNm="telefono" oNm="telefono_codeudor"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="codeudor" SupCls="Schema" SupNme="public">
+      <Rnm id="23" nNm="movil" oNm="movil_codeudor"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="codeudor" SupCls="Schema" SupNme="public">
+      <Rnm id="24" nNm="direccion" oNm="direccion_codeudor"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="codeudor" SupCls="Schema" SupNme="public">
+      <Rnm id="25" nNm="correo" oNm="correo_codeudor"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="26" nNm="formato_prestamo" oNm="formato_de_prestamo"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="27" nNm="paz_y_salvo" oNm="cutoa_recogida"/>
+    </RnmCh>
+  </RnmMgr>
+  <DbDocOptionMgr>
+    <BasicOptionMgr>
+      <Name>db.doc.option.mgr</Name>
+      <BoolOpt lbl="Diagrams" nm="doc.diagrams" on="1" spl="0"/>
+      <BoolOpt lbl="Foreign Keys" nm="doc.fks" on="1" spl="0"/>
+      <BoolOpt lbl="Indexes" nm="doc.indexes" on="1" spl="0"/>
+      <BoolOpt lbl="Overwrite CSS File" nm="doc.overwrite.css" on="1" spl="0"/>
+      <BoolOpt lbl="Procedures" nm="doc.procs" on="1" spl="0"/>
+      <BoolOpt lbl="Schemas" nm="doc.schemas" on="1" spl="0"/>
+      <BoolOpt lbl="Sequences" nm="doc.sequences" on="1" spl="0"/>
+      <BoolOpt lbl="Tables" nm="doc.tables" on="1" spl="0"/>
+      <BoolOpt lbl="Triggers" nm="doc.triggers" on="1" spl="0"/>
+      <BoolOpt lbl="Views" nm="doc.views" on="1" spl="0"/>
+    </BasicOptionMgr>
+  </DbDocOptionMgr>
+  <OpenEditors>
+    <OpenEditor ClsNm="Diagram" fqn="null.public" selected="1"/>
+  </OpenEditors>
+  <TreePaths>
+    <TreePath/>
+    <TreePath>/Schemas (1)</TreePath>
+    <TreePath>/Schemas (1)/public</TreePath>
+    <TreePath>/Schemas (1)/public/Tables (17)</TreePath>
+    <TreePath>/Diagrams (1)</TreePath>
+    <TreePath>/Diagrams (1)/public</TreePath>
+  </TreePaths>
+</Db>

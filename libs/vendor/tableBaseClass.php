@@ -191,10 +191,18 @@ namespace mvc\model\table {
               }
             } else {
               if ($flag === false) {
-                $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                if (is_numeric($field)) {
+                  $sql = $sql . ' WHERE ' . $value . ' ';
+                } else {
+                  $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                }
                 $flag = true;
               } else {
-                $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                if (is_numeric($field)) {
+                  $sql = $sql . ' AND ' . $value . ' ';
+                } else {
+                  $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                }
               }
             }
           }
