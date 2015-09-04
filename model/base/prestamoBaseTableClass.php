@@ -14,11 +14,11 @@ use mvc\model\table\tableBaseClass;
  * @author Jordan Marin
  */
 class prestamoBaseTableClass extends tableBaseClass {
-    protected $id;
-  protected $cliente;
+  protected $id;
   protected $formato_de_prestamo;
   protected $tiempo_cuota;
-   protected $actived;
+  protected $fecha_inicio;
+  protected $actived;
   protected $created_at;
   protected $updated_at;
   protected $deleted_at;
@@ -26,19 +26,13 @@ class prestamoBaseTableClass extends tableBaseClass {
 
 
   const ID = 'id';
-  const CLIENTE_ID= 'cliente';
-  const FORMATO_DE_PRESTAMO_ID= 'formato_de_prestamo';
-   const TIEMPO_CUOTA= 'tiempo_cuota';
+  const FORMATO_DE_PRESTAMO_ID = 'formato_de_prestamo_id';
+  const TIEMPO_CUOTA = 'tiempo_cuota';
+  const MONTO_CUOTA = 'monto_cuota';
+  const FECHA_INICIO = 'fecha_inicio';
   const CREATED_AT = 'created_at';
   const DELETED_AT = 'deleted_at';
   const UPDATED_AT = 'updated_at';
-
-  
-  
-  
-  
-    
-  
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

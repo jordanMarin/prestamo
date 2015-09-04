@@ -8,10 +8,10 @@ use mvc\config\configClass as config;
  */
 
 /**
- * Description of cargoTableClassTableClass
+ * Description of formato_de_prestamoTableClass
  *
  * @author Jordan Marin
  */
-class cargoTableClass extends cargoBaseTableClass{
+class formato_prestamoTableClass extends formato_de_prestamoBaseTableClass  {
     //put your code here
 }

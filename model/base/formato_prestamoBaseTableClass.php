@@ -1,101 +1,54 @@
 <?php
+
 use mvc\model\table\tableBaseClass;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
- * Description of cargoBaseTableClass
+ * Description of bitacoraBaseTableClass
  *
- * @author Jordan Marin
+ * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
  */
-class cargoBaseTableClass extends tableBaseClass {
+class formato_prestamoBaseTableClass extends tableBaseClass {
   protected $id;
-  protected $desc_cargo;
+  protected $monto_capital;
+  protected $numero_cuotas;
+  protected $banco;
+  protected $tipo_cuenta_bancaria;
+  protected $num_cuenta_bancaria;
+  protected $cliente;
+  protected $codeudor;
+  protected $aprovado;
+  protected $latitud;
+  protected $longitud;
   protected $actived;
   protected $created_at;
   protected $updated_at;
   protected $deleted_at;
+  protected static $package;
 
   const ID = 'id';
-  const DESC_CARGO= 'desc_cargo';
-  const DESC_CARGO_LENGTH = 80;
+  const MONTO_CAPITAL= 'monto_capital';
+  const NUMERO_CUOTAS= 'numero_cuotas';
+  const BANCO_ID= 'banco_id';
+  const TIPO_CUENTA_BANCARIA= 'tipo_cuenta_bancaria';
+  const TIPO_CUENTA_BANCARIA_LENGTH = 200;
+  const NUM_CUENTA_BANCARIA= 'num_cuenta_bancaria';
+  const NUM_CUENTA_BANCARIA_LENGTH = 30;
+  const CLIENTE_ID= 'cliente_id';
+  const APROVADO= 'aprovado';
+  const CODEUDOR= 'codeudor';
+  const LATITUD= 'latitud';
+  const LONGITUD= 'longitud';
+  const APROVADO= 'aprovado';
   const ACTIVED = 'actived';
   const CREATED_AT = 'created_at';
   const DELETED_AT = 'deleted_at';
   const UPDATED_AT = 'updated_at';
+
+   
+    
   
-  function getId() {
-      return $this->id;
-  }
 
-  function getDesc_cargo() {
-      return $this->desc_cargo;
-  }
-
-  function getActived() {
-      return $this->actived;
-  }
-
-  function getCreated_at() {
-      return $this->created_at;
-  }
-
-  function getUpdated_at() {
-      return $this->updated_at;
-  }
-
-  function getDeleted_at() {
-      return $this->deleted_at;
-  }
-
-  static function getPackage() {
-      return self::$package;
-  }
-
-  
-  
-  function setId($id) {
-      $this->id = $id;
-  }
-
-  function setDesc_cargo($desc_cargo) {
-      $this->desc_cargo = $desc_cargo;
-  }
-
-  function setActived($actived) {
-      $this->actived = $actived;
-  }
-
-  function setCreated_at($created_at) {
-      $this->created_at = $created_at;
-  }
-
-  function setUpdated_at($updated_at) {
-      $this->updated_at = $updated_at;
-  }
-
-  function setDeleted_at($deleted_at) {
-      $this->deleted_at = $deleted_at;
-  }
-
-  static function setPackage($package) {
-      self::$package = $package;
-  }
-
-      
-  function __construct($id, $desc_cargo, $actived, $created_at, $updated_at, $deleted_at) {
-      $this->id = $id;
-      $this->desc_cargo = $desc_cargo;
-      $this->actived = $actived;
-      $this->created_at = $created_at;
-      $this->updated_at = $updated_at;
-      $this->deleted_at = $deleted_at;
-  }
-
-    /**
+  /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)
    *
@@ -113,7 +66,7 @@ class cargoBaseTableClass extends tableBaseClass {
    * @return string
    */
   public static function getNameTable() {
-    return 'cargo';
+    return 'formato_de_prestamo';
   }
 
   /**
@@ -177,16 +130,4 @@ class cargoBaseTableClass extends tableBaseClass {
     return parent::update($ids, $data, self::getNameTable());
   }
 
-}
-{
-    //put your code here
-}
-{
-    //put your code here
-}
-{
-    //put your code here
-}
-{
-    //put your code here
 }

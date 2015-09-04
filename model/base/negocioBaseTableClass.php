@@ -8,27 +8,26 @@ use mvc\model\table\tableBaseClass;
  * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
  */
 class negocioBaseTableClass extends tableBaseClass {
-    protected $id;
-  protected $nombre_negocio;
-  protected $direccion_negocio;
-  protected $telefono_negocio;
-  protected $valor_ingreso_negocio;
+  protected $id;
+  protected $nombre;
+  protected $direccion;
+  protected $telefono;
+  protected $ingreso_mensual;
   protected $cliente;
-   protected $actived;
+  protected $actived;
   protected $created_at;
   protected $updated_at;
   protected $deleted_at;
   protected static $package;
 
-
- const ID = 'id';
-  const NOMBRE_NEGOCIO= 'nombre_negocio';
-  const NOMBRE_NEGOCIO_LENGTH = 1024;
-  const DIRECCION_NEGOCIO= 'direccion_negocio';
-  const DIRECCION_NEGOCIO_LENGTH = 60;
-  const TELEFONO_NEGOCIO= 'telefono_negocio';
-  const TELEFONO_NEGOCIO_LENGTH = 15;
-  const VALOR_INGRESO_NEGOCIO= 'valor_ingreso_negocio';
+  const ID = 'id';
+  const NOMBRE= 'nombre';
+  const NOMBRE_LENGTH = 1024;
+  const DIRECCION= 'direccion';
+  const DIRECCION_LENGTH = 60;
+  const TELEFONO= 'telefono';
+  const TELEFON_LENGTH = 15;
+  const INGRESO_MENSUAL= 'ingreso_mensual';
   const CLIENTE_ID= 'cliente';
   const ACTIVED = 'actived';
 const CREATED_AT = 'created_at';

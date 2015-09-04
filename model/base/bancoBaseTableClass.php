@@ -2,21 +2,21 @@
 
 use mvc\model\table\tableBaseClass;
 
-/**
- * Description of bitacoraBaseTableClass
- *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-class formato_de_prestamoBaseTableClass extends tableBaseClass {
+
+/**
+ * Description of bancoBaseTableClass
+ *
+ * @author Jordan Marin
+ */
+class bancoBaseTableClass extends tableBaseClass {
+
   protected $id;
-  protected $monto_capital;
-  protected $numero_cuotas;
-  protected $nombre_banco;
-  protected $tipo_cuenta_bancaria;
-  protected $num_cuenta_bancaria;
-  protected $cliente;
-  protected $codeudor;
-  protected $aprovado;
+  protected $nombre; 
   protected $actived;
   protected $created_at;
   protected $updated_at;
@@ -24,25 +24,15 @@ class formato_de_prestamoBaseTableClass extends tableBaseClass {
   protected static $package;
 
   const ID = 'id';
-  const MONTO_CAPITAL= 'monto_capital';
-  const NUMERO_CUOTAS= 'numero_cuotas';
-  const NOMBRE_BANCO= 'nombre_banco';
-  const NOMBRE_BANCO_LENGTH = 100;
-  const TIPO_CUENTA_BANCARIA= 'tipo_cuenta_bancaria';
-  const TIPO_CUENTA_BANCARIA_LENGTH = 200;
-  const NUM_CUENTA_BANCARIA= 'num_cuenta_bancaria';
-  const NUM_CUENTA_BANCARIA_LENGTH = 30;
-  const CLIENTE_ID= 'cliente';
-  const CODEUDOR_ID= 'codeudor';
-  const APROVADO= 'aprovado';
+  const NOMBRE_BARRIO = 'nombre';
+  const NOMBRE_BARRIO_LENGTH = 50;
   const ACTIVED = 'actived';
   const CREATED_AT = 'created_at';
   const DELETED_AT = 'deleted_at';
   const UPDATED_AT = 'updated_at';
-
-   
-    
   
+
+ 
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
@@ -62,7 +52,7 @@ class formato_de_prestamoBaseTableClass extends tableBaseClass {
    * @return string
    */
   public static function getNameTable() {
-    return 'formato_de_prestamo';
+    return 'barrio';
   }
 
   /**

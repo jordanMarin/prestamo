@@ -14,10 +14,9 @@ use mvc\model\table\tableBaseClass;
  */ 
 class paz_y_salvoBaseTableClass extends tableBaseClass {
     protected $id;
-  protected $valor_entregado;
-  protected $observación;
-  protected $empleado;
-   protected $actived;
+  protected $prestamo;
+  protected $pdf;
+  protected $actived;
   protected $created_at;
   protected $updated_at;
   protected $deleted_at;
@@ -25,22 +24,13 @@ class paz_y_salvoBaseTableClass extends tableBaseClass {
 
 
   const ID = 'id';
-  const VALOR_ENTREGADO= 'valor_entregado';
-  const VALOR_ENTREGADO_LENGTH = 50;
-  const OBSERVACIÓN= 'observación';
-  const OBSERVACIÓN_LENGTH = 1024;
-  const EMPLEADO_ID= 'empleado';
-   const ACTIVED = 'actived'; 
-const CREATED_AT = 'created_at';
+  const PRESTAMO_ID = 'prestamo_id';
+  const PDF = 'pdf';
+  const PDF_LENGTH = 37;
+  const ACTIVED = 'actived';
+  const CREATED_AT = 'created_at';
   const DELETED_AT = 'deleted_at';
-const UPDATED_AT = 'updated_at';
-
-  
-  
-  
-  
-    
-  
+  const UPDATED_AT = 'updated_at';
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

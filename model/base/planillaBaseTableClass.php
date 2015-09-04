@@ -15,32 +15,31 @@ use mvc\model\table\tableBaseClass;
  */
 class planillaBaseTableClass extends tableBaseClass {
   protected $id;
+  protected $fecha_recojida;
   protected $valor_recaudo;
   protected $observaciones;
   protected $empleado;
   protected $prestamo;
-   protected $actived;
+  protected $actived;
   protected $created_at;
   protected $updated_at;
   protected $deleted_at;
   protected static $package;
 
 
- const ID = 'id';
-    const VALOR_RECAUDO= 'valor_recaudo';
-  const OBSERVACIONES= 'observaciones';
+  const ID = 'id';
+  const FECHA_RECOJIDA = 'fecha_recojida';
+  const VALOR_RECAUDO = 'valor_recaudo';
+  const OBSERVACIONES = 'observaciones';
   const OBSERVACIONES_LENGTH = 1024;
-    const EMPLEADO_ID= 'empleado';
-      const PRESTAMO_ID= 'prestamo';
-      const ACTIVED = 'actived'; 
-const CREATED_AT = 'created_at';
+  const EMPLEADO_ID = 'empleado_id';
+  const PRESTAMO_ID = 'prestamo_id';
+  const LATITUD= 'latitud';
+  const LONGITUD= 'longitud';
+  const ACTIVED = 'actived';
+  const CREATED_AT = 'created_at';
   const DELETED_AT = 'deleted_at';
-const UPDATED_AT = 'updated_at';
-
-  
-  
-    
-  
+  const UPDATED_AT = 'updated_at';
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

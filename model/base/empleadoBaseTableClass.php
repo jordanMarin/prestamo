@@ -12,14 +12,16 @@ use mvc\model\table\tableBaseClass;
  * @author Jordan Marin
  */
 class empleadoBaseTableClass extends tableBaseClass {
-  protected $id;
+   protected $id;
+  protected $tipo_documento;
+  protected $numero_identificacion;
   protected $nombre;
-  protected $apellido_empleado;
-  protected $direccion_empleado;
-  protected $telefono_empleado;
-  protected $movil_empelado;
-  protected $correo_empleado;
-  protected $cargo;
+  protected $apellido;
+  protected $celular;
+  protected $telefono;
+  protected $correo;
+  protected $direccion;
+  protected $fecha_nacimiento;
   protected $usuario;
   protected $actived;
   protected $created_at;
@@ -27,28 +29,30 @@ class empleadoBaseTableClass extends tableBaseClass {
   protected $deleted_at;
   protected static $package;
 
-    
 
-   const ID = 'id';
-   const NOMBRE= 'nombre';
-   const NOMBRE_LENGTH = 50;
-   const APELLIDO_EMPLEADO= 'apellido_empleado';
-   const APELLIDO_EMPLEADO_LENGTH = 50;
-   const DIRECCION_EMPLEADO= 'direccion_empleado';
-   const DIRECCION_EMPLEADO_LENGTH = 50;
-   const TELEFONO_EMPLEADO= 'telefono_empleado';
-   const TELEFONO_EMPLEADO_LENGTH = 15;
-   const MOVIL_EMPELADO= 'movil_empelado';
-   const MOVIL_EMPELADO_LENGTH = 12;
-   const CORREO_EMPLEADO= 'correo_empleado';
-   const CORREO_EMPLEADO_LENGTH = 100;
-   const CARGO_ID= 'cargo_id';
-   const USUARIO_ID= 'usuario_id';
-   const ACTIVED = 'actived';
-   const CREATED_AT = 'created_at';
-   const DELETED_AT = 'deleted_at';
-   const UPDATED_AT = 'updated_at';
-
+  const ID = 'id';
+  const TIPO_DOCUMENTO_ID = 'tipo_documento_id';
+  const IDENTIFICACION = 'identificacion';
+  const IDENTIFICACION_LENGTH = 100;
+  const NOMBRE = 'nombre';
+  const NOMBRE_LENGTH = 60;
+  const APELLIDO = 'apellido';
+  const APELLIDO_LENGTH = 60;
+  const CELULAR_ = 'celular';
+  const CELULAR_LENGTH = 12;
+  const TELEFONO = 'telefono';
+  const TELEFONO_LENGTH = 15;
+  const CORREO = 'correo';
+  const CORREO_LENGTH = 100;
+  const DIRECCION = 'direccion';
+  const DIRECCION_LENGTH = 200;
+  const FECHA_NACIMIENTO = 'fecha_nacimiento';
+  const USUARIO_ID = 'usuario_id';
+  const ACTIVED = 'actived';
+  const CREATED_AT = 'created_at';
+  const DELETED_AT = 'deleted_at';
+  const UPDATED_AT = 'updated_at';
+  
   
   
   

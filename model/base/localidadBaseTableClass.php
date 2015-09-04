@@ -23,19 +23,14 @@ class localidadBaseTableClass extends tableBaseClass {
   protected static $package;
 
 
- const ID = 'id';
-  const NOMBRE= 'nombre';
+  const ID = 'id';
+  const NOMBRE = 'nombre';
   const NOMBRE_LENGTH = 50;
-  const LOCALIDAD_ID= 'localidad_id';
-   const ACTIVED = 'actived';
-const CREATED_AT = 'created_at';
+  const LOCALIDAD_ID = 'localidad_id';
+  const ACTIVED = 'actived';
+  const CREATED_AT = 'created_at';
   const DELETED_AT = 'deleted_at';
-const UPDATED_AT = 'updated_at';
-
-  
-  
-    
-  
+  const UPDATED_AT = 'updated_at';
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato

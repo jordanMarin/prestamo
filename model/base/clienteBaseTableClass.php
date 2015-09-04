@@ -12,13 +12,13 @@ class clienteBaseTableClass extends tableBaseClass {
   protected $id;
   protected $tipo_documento;
   protected $numero_identificacion;
-  protected $nombre_cliente;
-  protected $apellido_cliente;
-  protected $celular_cliente;
-  protected $telefono_cliente;
-  protected $correo_cliente;
-  protected $direccion_cliente;
-  protected $fecha_nacimiento_cliente;
+  protected $nombre;
+  protected $apellido;
+  protected $celular;
+  protected $telefono;
+  protected $correo;
+  protected $direccion;
+  protected $fecha_nacimiento;
   protected $localidad;
   protected $usuario;
   protected $actived;
@@ -30,21 +30,21 @@ class clienteBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
   const TIPO_DOCUMENTO_ID = 'tipo_documento_id';
-  const NUMERO_IDENTIFICACION = 'numero_identificacion';
-  const NUMERO_IDENTIFICACION_LENGTH = 100;
-  const NOMBRE_CLIENTE = 'nombre_cliente';
-  const NOMBRE_CLIENTE_LENGTH = 60;
-  const APELLIDO_CLIENTE = 'apellido_cliente';
-  const APELLIDO_CLIENTE_LENGTH = 60;
-  const CELULAR_CLIENTE = 'celular_cliente';
-  const CELULAR_CLIENTE_LENGTH = 12;
-  const TELEFONO_CLIENTE = 'telefono_cliente';
-  const TELEFONO_CLIENTE_LENGTH = 15;
-  const CORREO_CLIENTE = 'correo_cliente';
-  const CORREO_CLIENTE_LENGTH = 100;
-  const DIRECCION_CLIENTE = 'direccion_cliente';
-  const DIRECCION_CLIENTE_LENGTH = 200;
-  const FECHA_NACIMIENTO_CLIENTE = 'fecha_nacimiento_cliente';
+  const IDENTIFICACION = 'identificacion';
+  const IDENTIFICACION_LENGTH = 100;
+  const NOMBRE = 'nombre';
+  const NOMBRE_LENGTH = 60;
+  const APELLIDO = 'apellido';
+  const APELLIDO_LENGTH = 60;
+  const CELULAR_ = 'celular';
+  const CELULAR_LENGTH = 12;
+  const TELEFONO = 'telefono';
+  const TELEFONO_LENGTH = 15;
+  const CORREO = 'correo';
+  const CORREO_LENGTH = 100;
+  const DIRECCION = 'direccion';
+  const DIRECCION_LENGTH = 200;
+  const FECHA_NACIMIENTO = 'fecha_nacimiento';
   const LOCALIDAD_ID = 'localidad_id';
   const USUARIO_ID = 'usuario_id';
   const ACTIVED = 'actived';
@@ -53,17 +53,17 @@ class clienteBaseTableClass extends tableBaseClass {
   const UPDATED_AT = 'updated_at';
   
   
-  function __construct($id, $tipo_documento, $numero_identificacion, $nombre_cliente, $apellido_cliente, $celular_cliente, $telefono_cliente, $correo_cliente, $direccion_cliente, $fecha_nacimiento_cliente, $localidad, $usuario, $actived, $created_at, $updated_at, $deleted_at) {
+  function __construct($id, $tipo_documento, $identificacion, $nombre, $apellido, $celular, $telefono, $correo, $direccion, $fecha_nacimiento, $localidad, $usuario, $actived, $created_at, $updated_at, $deleted_at) {
     $this->id = $id;
     $this->tipo_documento = $tipo_documento;
-    $this->numero_identificacion = $numero_identificacion;
-    $this->nombre_cliente = $nombre_cliente;
-    $this->apellido_cliente = $apellido_cliente;
-    $this->celular_cliente = $celular_cliente;
-    $this->telefono_cliente = $telefono_cliente;
-    $this->correo_cliente = $correo_cliente;
-    $this->direccion_cliente = $direccion_cliente;
-    $this->fecha_nacimiento_cliente = $fecha_nacimiento_cliente;
+    $this->identificacion = $identificacion;
+    $this->nombre = $nombre;
+    $this->apellido = $apellido;
+    $this->celular = $celular;
+    $this->telefono = $telefono;
+    $this->correo = $correo;
+    $this->direccion= $direccion;
+    $this->fecha_nacimiento = $fecha_nacimiento;
     $this->localidad = $localidad;
     $this->usuario = $usuario;
     $this->actived = $actived;
