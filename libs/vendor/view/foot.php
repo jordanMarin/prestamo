@@ -16,5 +16,6 @@
     <i class="fa fa-leaf mvcPointer"></i> SHF <?php echo config::getSohoFrameworkVersion() ?>
   </div>
   <?php endif ?>
+  <?php echo \mvc\view\viewClass::genJavascript() ?>
 </body>
 </html>

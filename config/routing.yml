@@ -1,90 +1,62 @@
 homepage:
   url:    /
-  param:  { module: default, action: index, format: html }
-  load:
-    - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php
+  param:  { module: sitioWeb, action: index, format: html }
 
-
-default_insert:
-  url:    /default/insert
-  param:  { module: default, action: insert, format: html }
-  load:
-   - model/base/usuarioBaseTableClass.php
-   - model/usuarioTableClass.php
-
-
-default_update:
-  url:    /default/update
-  param:  { module: default, action: update, format: html }
-  load:
-   - model/base/usuarioBaseTableClass.php
-   - model/usuarioTableClass.php
-   
-
-default_edit:
-  url:    /default/edit
-  param:  { module: default, action: edit, format: html }
-  load:
-   - model/base/usuarioBaseTableClass.php
-   - model/usuarioTableClass.php   
-   
-
-default_deleteSelect:
-  url:    /default/deleteSelect
-  param:  { module: default, action: deleteSelect, format: html }
-  load:
-   - model/base/usuarioBaseTableClass.php
-   - model/usuarioTableClass.php   
-
-
-default_edit:
-  url:    /default/editEmpleado
-  param:  { module: prestamo, action: editEmpleado, format: html }
-  load:
-   - model/base/usuarioBaseTableClass.php
-   - model/usuarioTableClass.php
-   - model/base/empleadoBaseTableClass.php
-   - model/empleadoTableClass.php
-   - model/base/cargoBaseTableClass.php
-   - model/cargoTableClass.php
-   
-default_update:
-  url:    /prestamo/updateEmpleado
-  param:  { module: prestamo, action: updateEmpleado, format: html }
-  load:
-   - model/base/usuarioBaseTableClass.php
-   - model/usuarioTableClass.php
-   - model/base/empleadoBaseTableClass.php
-   - model/empleadoTableClass.php   
-   
-   
-   
-   
-edit_cliente:
-  url:    /prestamo/editCliente
-  param:  { module: prestamo, action: editCliente, format: html }
-  load:
-   - model/base/usuarioBaseTableClass.php
-   - model/usuarioTableClass.php
-   - model/base/clienteBaseTableClass.php
-   - model/clienteTableClass.php
-   - model/base/tipo_documentoBaseTableClass.php
-   - model/tipo_documentoTableClass.php
-   - model/base/localidadBaseTableClass.php
-   - model/localidadTableClass.php
-
-update_cliente:
-  url:    /prestamo/updateCliente
-  param:  { module: prestamo, action: updateCliente, format: html }
-  load:
-   - model/base/usuarioBaseTableClass.php
-   - model/usuarioTableClass.php
-   - model/base/clienteBaseTableClass.php
-   - model/clienteTableClass.php 
-   
-   
- 
+#default_insert:
+#  url:    /default/insert
+#  param:  { module: default, action: insert, format: html }
+#  load:
+#   - model/base/usuarioBaseTableClass.php
+#   - model/usuarioTableClass.php
+#
+#
+#default_update:
+#  url:    /default/update
+#  param:  { module: default, action: update, format: html }
+#  load:
+#   - model/base/usuarioBaseTableClass.php
+#   - model/usuarioTableClass.php
+#   
+#
+#default_edit:
+#  url:    /default/edit
+#  param:  { module: default, action: edit, format: html }
+#  load:
+#   - model/base/usuarioBaseTableClass.php
+#   - model/usuarioTableClass.php   
+#   
+#
+#default_deleteSelect:
+#  url:    /default/deleteSelect
+#  param:  { module: default, action: deleteSelect, format: html }
+#  load:
+#   - model/base/usuarioBaseTableClass.php
+#   - model/usuarioTableClass.php   
+#
+#
+#default_edit:
+#  url:    /default/editEmpleado
+#  param:  { module: prestamo, action: editEmpleado, format: html }
+#  load:
+#   - model/base/usuarioBaseTableClass.php
+#   - model/usuarioTableClass.php
+#   - model/base/empleadoBaseTableClass.php
+#   - model/empleadoTableClass.php
+#   - model/base/cargoBaseTableClass.php
+#   - model/cargoTableClass.php
+#   
+#default_update:
+#  url:    /prestamo/updateEmpleado
+#  param:  { module: prestamo, action: updateEmpleado, format: html }
+#  load:
+#   - model/base/usuarioBaseTableClass.php
+#   - model/usuarioTableClass.php
+#   - model/base/empleadoBaseTableClass.php
+#   - model/empleadoTableClass.php   
+#   
+#   
+#   
+#   
 #edit_cliente:
 #  url:    /prestamo/editCliente
 #  param:  { module: prestamo, action: editCliente, format: html }
@@ -92,237 +64,261 @@ update_cliente:
 #   - model/base/usuarioBaseTableClass.php
 #   - model/usuarioTableClass.php
 #   - model/base/clienteBaseTableClass.php
-#   - model/clienteTableClass.php  
-##-------------------------- shfSecurity --------------------------##
-
-
-default_insert:
-  url:    /usuarios/insertar
-  param:  { module: default, action: insert, format: html }
-  load:
-   - model/base/usuarioBaseTableClass.php
-   - model/usuarioTableClass.php
-shfSecurity_index:
-  url:    /signin
-  param:  { module: shfSecurity, action: index, format: html }
-  load:
-    - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php
-
-shfSecurity_login:
-  url:    /login
-  param:  { module: shfSecurity, action: login, format: html }
-  load:
-    - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php
-    - model/base/usuarioCredencialBaseTableClass.php
-    - model/usuarioCredencialTableClass.php
-    - model/base/credencialBaseTableClass.php
-    - model/credencialTableClass.php
-    - model/base/recordarMeBaseTableClass.php
-    - model/recordarMeTableClass.php
-    - hooks/logHookClass.php
-    - model/base/bitacoraBaseTableClass.php
-    - model/bitacoraTableClass.php
-
-shfSecurity_logout:
-  url:    /logout
-  param:  { module: shfSecurity, action: logout, format: html }
-  load:
-    - model/base/recordarMeBaseTableClass.php
-    - model/recordarMeTableClass.php
-    - hooks/logHookClass.php
-    - model/base/bitacoraBaseTableClass.php
-    - model/bitacoraTableClass.php
-
-shfSecurity_noPermission:
-  url:    /sin_permisos
-  param:  { module: shfSecurity, action: noPermission, format: html }
-
-shfSecurity_exception:
-  url:    /exception
-  param:  { module: shfSecurity, action: exception, format: html }
-##-------------------------- shfSecurity --------------------------##
-
-##-------------------------- EJEMPLO --------------------------##
-
-
-prestamo_barrio:
-  url:   /prestamo/barrio
-  param:  { module: prestamo, action: barrio, format: html }
-  load:
-    - model/base/barrioBaseTableClass.php
-    - model/barrioTableClass.php
-    - model/base/localidadBaseTableClass.php
-    - model/localidadTableClass.php
-prestamo_barrio_create:
-  url:    /prestamo/crear/barrio
-  param:  { module: prestamo, action: createBarrio, format: html }
-  load:
-    - model/base/barrioBaseTableClass.php
-    - model/barrioTableClass.php
-    - libs/validator/prestamo/createBarrioValidatorClass.php
-    - model/base/localidadBaseTableClass.php
-    - model/localidadTableClass.php
-
-prestamo_cliente:
-  url:   /prestamo/cliente
-  param:  { module: prestamo, action: cliente, format: html }
-  load:
-    - model/base/clienteBaseTableClass.php
-    - model/clienteTableClass.php
-    - model/base/tipo_documentoBaseTableClass.php
-    - model/tipo_documentoTableClass.php
-    - model/base/localidadBaseTableClass.php
-    - model/localidadTableClass.php
-prestamo_cliente_create:
-  url:    /prestamo/crear/cliente
-  param:  { module: prestamo, action: createCliente, format: html }
-  load:
-    - model/base/clienteBaseTableClass.php
-    - model/clienteTableClass.php
-    - libs/validator/prestamo/createClienteValidatorClass.php
-    - model/base/tipo_documentoBaseTableClass.php
-    - model/tipo_documentoTableClass.php
-    - model/base/localidadBaseTableClass.php
-    - model/localidadTableClass.php
-prestamo_index:
-  url:   /prestamo/index
-  param:  { module: prestamo, action: index, format: html }
-
-prestamo_procesar:
-  url:   /prestamo/procesar
-  param:  { module: prestamo, action: procesar, format: html }
-
-default_index:
-  url:    /default/barrio
-  param:  { module: default, action: barrio, format: html }
-  load:
-    - model/base/barrioBaseTableClass.php
-    - model/barrioTableClass.php
-
-prestamo_cargo:
-  url:    /prestamo/cargo
-  param:  { module: prestamo, action: formInsertarCargo, format: html }
-  load:
-    - model/base/cargoBaseTableClass.php
-    - model/cargoTableClass.php
-
-prestamo_cargo_create:
-  url:    /prestamo/crear/cargo
-  param:  { module: prestamo, action: createCargo, format: html }
-  load:
-    - model/base/cargoBaseTableClass.php
-    - model/cargoTableClass.php
-    - libs/validator/prestamo/createCargoValidatorClass.php
-    
-
-    
-    
-prestamo_codeudor:
-  url:    /prestamo/codeudor
-  param:  { module: prestamo, action: codeudor, format: html }
-  load:
-    - model/base/codeudorBaseTableClass.php
-    - model/codeudorTableClass.php
-    - model/base/tipo_documentoBaseTableClass.php
-    - model/tipo_documentoTableClass.php
-    - model/base/localidadBaseTableClass.php
-    - model/localidadTableClass.php
-
-prestamo_codeudor_create:
-  url:    /prestamo/crear/codeudor
-  param:  { module: prestamo, action: createCodeudor, format: html }
-  load:
-    - model/base/codeudorBaseTableClass.php
-    - model/codeudorTableClass.php
-    - libs/validator/prestamo/createCodeudorValidatorClass.php
-    - model/base/tipo_documentoBaseTableClass.php
-    - model/tipo_documentoTableClass.php
-    - model/base/localidadBaseTableClass.php
-    - model/localidadTableClass.php
-    
-    
-prestamo_empleado:
-  url:   /prestamo/empleado
-  param:  { module: prestamo, action: empleado, format: html }
-  load:
-    - model/base/empleadoBaseTableClass.php
-    - model/empleadoTableClass.php
-    - model/base/cargoBaseTableClass.php
-    - model/cargoTableClass.php
-prestamo_empleado_create:
-  url:    /prestamo/crear/empleado
-  param:  { module: prestamo, action: createEmpleado, format: html }
-  load:
-    - model/base/empleadoBaseTableClass.php
-    - model/empleadoTableClass.php
-    - libs/validator/prestamo/createEmpleadoValidatorClass.php
-    - model/base/cargoBaseTableClass.php
-    - model/cargoTableClass.php  
-
- 
-prestamo_negocio:
-   url:    /prestamo/negocio
-   param:  { module: prestamo, action:  negocio, format: html }
-   load:
-     
-    - model/base/negocioBaseTableClass.php
-    - model/negocioTableClass.php
-    - model/base/clienteBaseTableClass.php
-    - model/clienteTableClass.php
- 
-prestamo_negocio_create:
-   url:    /prestamo/crear/negocio
-   param:  { module: prestamo, action:  createNegocio, format: html }
-   load:
-     
-    - model/base/negocioBaseTableClass.php
-    - model/negocioTableClass.php
-    - libs/validator/prestamo/createNegocioValidatorClass.php
-    - model/base/clienteBaseTableClass.php
-    - model/clienteTableClass.php
- 
- 
- 
- 
- 
- 
- 
- 
- 
-   
-prestamo_formato_de_prestamo:
-  url:    /prestamo/formato_de_prestamo
-  param:  { module: prestamo, action:  formato_de_prestamo, format: html }
-
-prestamo_localidad:
-  url:    /prestamo/localidad
-  param:  { module: prestamo, action:  localidad, format: html }
-  load:
-
-  
-prestamo_negocio:
-   url:    /prestamo/negocio
-   param:  { module: prestamo, action:  negocio, format: html }
-   load:
-
- 
-    
-prestamo_ paz_y_salvo:
-   url:    /prestamo/paz_y_salvo
-   param:  { module: prestamo, action:   paz_y_salvo, format: html }
-   load:
-
-
-Listado_empleado:
-   url:    /listado/empleado
-   param:  { module: prestamo, action: listadoEmpleado, format: html }
-   load:
-    - model/base/empleadoBaseTableClass.php
-    - model/empleadoTableClass.php
-    - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php 
+#   - model/clienteTableClass.php
+#   - model/base/tipo_documentoBaseTableClass.php
+#   - model/tipo_documentoTableClass.php
+#   - model/base/localidadBaseTableClass.php
+#   - model/localidadTableClass.php
+#
+#update_cliente:
+#  url:    /prestamo/updateCliente
+#  param:  { module: prestamo, action: updateCliente, format: html }
+#  load:
+#   - model/base/usuarioBaseTableClass.php
+#   - model/usuarioTableClass.php
+#   - model/base/clienteBaseTableClass.php
+#   - model/clienteTableClass.php 
+#   
+#   
+# 
+##edit_cliente:
+##  url:    /prestamo/editCliente
+##  param:  { module: prestamo, action: editCliente, format: html }
+##  load:
+##   - model/base/usuarioBaseTableClass.php
+##   - model/usuarioTableClass.php
+##   - model/base/clienteBaseTableClass.php
+##   - model/clienteTableClass.php  
+###-------------------------- shfSecurity --------------------------##
+#
+#
+#default_insert:
+#  url:    /usuarios/insertar
+#  param:  { module: default, action: insert, format: html }
+#  load:
+#   - model/base/usuarioBaseTableClass.php
+#   - model/usuarioTableClass.php
+#shfSecurity_index:
+#  url:    /signin
+#  param:  { module: shfSecurity, action: index, format: html }
+#  load:
+#    - model/base/usuarioBaseTableClass.php
+#    - model/usuarioTableClass.php
+#
+#shfSecurity_login:
+#  url:    /login
+#  param:  { module: shfSecurity, action: login, format: html }
+#  load:
+#    - model/base/usuarioBaseTableClass.php
+#    - model/usuarioTableClass.php
+#    - model/base/usuarioCredencialBaseTableClass.php
+#    - model/usuarioCredencialTableClass.php
+#    - model/base/credencialBaseTableClass.php
+#    - model/credencialTableClass.php
+#    - model/base/recordarMeBaseTableClass.php
+#    - model/recordarMeTableClass.php
+#    - hooks/logHookClass.php
+#    - model/base/bitacoraBaseTableClass.php
+#    - model/bitacoraTableClass.php
+#
+#shfSecurity_logout:
+#  url:    /logout
+#  param:  { module: shfSecurity, action: logout, format: html }
+#  load:
+#    - model/base/recordarMeBaseTableClass.php
+#    - model/recordarMeTableClass.php
+#    - hooks/logHookClass.php
+#    - model/base/bitacoraBaseTableClass.php
+#    - model/bitacoraTableClass.php
+#
+#shfSecurity_noPermission:
+#  url:    /sin_permisos
+#  param:  { module: shfSecurity, action: noPermission, format: html }
+#
+#shfSecurity_exception:
+#  url:    /exception
+#  param:  { module: shfSecurity, action: exception, format: html }
+###-------------------------- shfSecurity --------------------------##
+#
+###-------------------------- EJEMPLO --------------------------##
+#
+#
+#prestamo_barrio:
+#  url:   /prestamo/barrio
+#  param:  { module: prestamo, action: barrio, format: html }
+#  load:
+#    - model/base/barrioBaseTableClass.php
+#    - model/barrioTableClass.php
+#    - model/base/localidadBaseTableClass.php
+#    - model/localidadTableClass.php
+#prestamo_barrio_create:
+#  url:    /prestamo/crear/barrio
+#  param:  { module: prestamo, action: createBarrio, format: html }
+#  load:
+#    - model/base/barrioBaseTableClass.php
+#    - model/barrioTableClass.php
+#    - libs/validator/prestamo/createBarrioValidatorClass.php
+#    - model/base/localidadBaseTableClass.php
+#    - model/localidadTableClass.php
+#
+#prestamo_cliente:
+#  url:   /prestamo/cliente
+#  param:  { module: prestamo, action: cliente, format: html }
+#  load:
+#    - model/base/clienteBaseTableClass.php
+#    - model/clienteTableClass.php
+#    - model/base/tipo_documentoBaseTableClass.php
+#    - model/tipo_documentoTableClass.php
+#    - model/base/localidadBaseTableClass.php
+#    - model/localidadTableClass.php
+#prestamo_cliente_create:
+#  url:    /prestamo/crear/cliente
+#  param:  { module: prestamo, action: createCliente, format: html }
+#  load:
+#    - model/base/clienteBaseTableClass.php
+#    - model/clienteTableClass.php
+#    - libs/validator/prestamo/createClienteValidatorClass.php
+#    - model/base/tipo_documentoBaseTableClass.php
+#    - model/tipo_documentoTableClass.php
+#    - model/base/localidadBaseTableClass.php
+#    - model/localidadTableClass.php
+#prestamo_index:
+#  url:   /prestamo/index
+#  param:  { module: prestamo, action: index, format: html }
+#
+#prestamo_procesar:
+#  url:   /prestamo/procesar
+#  param:  { module: prestamo, action: procesar, format: html }
+#
+#default_index:
+#  url:    /default/barrio
+#  param:  { module: default, action: barrio, format: html }
+#  load:
+#    - model/base/barrioBaseTableClass.php
+#    - model/barrioTableClass.php
+#
+#prestamo_cargo:
+#  url:    /prestamo/cargo
+#  param:  { module: prestamo, action: formInsertarCargo, format: html }
+#  load:
+#    - model/base/cargoBaseTableClass.php
+#    - model/cargoTableClass.php
+#
+#prestamo_cargo_create:
+#  url:    /prestamo/crear/cargo
+#  param:  { module: prestamo, action: createCargo, format: html }
+#  load:
+#    - model/base/cargoBaseTableClass.php
+#    - model/cargoTableClass.php
+#    - libs/validator/prestamo/createCargoValidatorClass.php
+#    
+#
+#    
+#    
+#prestamo_codeudor:
+#  url:    /prestamo/codeudor
+#  param:  { module: prestamo, action: codeudor, format: html }
+#  load:
+#    - model/base/codeudorBaseTableClass.php
+#    - model/codeudorTableClass.php
+#    - model/base/tipo_documentoBaseTableClass.php
+#    - model/tipo_documentoTableClass.php
+#    - model/base/localidadBaseTableClass.php
+#    - model/localidadTableClass.php
+#
+#prestamo_codeudor_create:
+#  url:    /prestamo/crear/codeudor
+#  param:  { module: prestamo, action: createCodeudor, format: html }
+#  load:
+#    - model/base/codeudorBaseTableClass.php
+#    - model/codeudorTableClass.php
+#    - libs/validator/prestamo/createCodeudorValidatorClass.php
+#    - model/base/tipo_documentoBaseTableClass.php
+#    - model/tipo_documentoTableClass.php
+#    - model/base/localidadBaseTableClass.php
+#    - model/localidadTableClass.php
+#    
+#    
+#prestamo_empleado:
+#  url:   /prestamo/empleado
+#  param:  { module: prestamo, action: empleado, format: html }
+#  load:
+#    - model/base/empleadoBaseTableClass.php
+#    - model/empleadoTableClass.php
+#    - model/base/cargoBaseTableClass.php
+#    - model/cargoTableClass.php
+#prestamo_empleado_create:
+#  url:    /prestamo/crear/empleado
+#  param:  { module: prestamo, action: createEmpleado, format: html }
+#  load:
+#    - model/base/empleadoBaseTableClass.php
+#    - model/empleadoTableClass.php
+#    - libs/validator/prestamo/createEmpleadoValidatorClass.php
+#    - model/base/cargoBaseTableClass.php
+#    - model/cargoTableClass.php  
+#
+# 
+#prestamo_negocio:
+#   url:    /prestamo/negocio
+#   param:  { module: prestamo, action:  negocio, format: html }
+#   load:
+#     
+#    - model/base/negocioBaseTableClass.php
+#    - model/negocioTableClass.php
+#    - model/base/clienteBaseTableClass.php
+#    - model/clienteTableClass.php
+# 
+#prestamo_negocio_create:
+#   url:    /prestamo/crear/negocio
+#   param:  { module: prestamo, action:  createNegocio, format: html }
+#   load:
+#     
+#    - model/base/negocioBaseTableClass.php
+#    - model/negocioTableClass.php
+#    - libs/validator/prestamo/createNegocioValidatorClass.php
+#    - model/base/clienteBaseTableClass.php
+#    - model/clienteTableClass.php
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+#   
+#prestamo_formato_de_prestamo:
+#  url:    /prestamo/formato_de_prestamo
+#  param:  { module: prestamo, action:  formato_de_prestamo, format: html }
+#
+#prestamo_localidad:
+#  url:    /prestamo/localidad
+#  param:  { module: prestamo, action:  localidad, format: html }
+#  load:
+#
+#  
+#prestamo_negocio:
+#   url:    /prestamo/negocio
+#   param:  { module: prestamo, action:  negocio, format: html }
+#   load:
+#
+# 
+#    
+#prestamo_ paz_y_salvo:
+#   url:    /prestamo/paz_y_salvo
+#   param:  { module: prestamo, action:   paz_y_salvo, format: html }
+#   load:
+#
+#
+#Listado_empleado:
+#   url:    /listado/empleado
+#   param:  { module: prestamo, action: listadoEmpleado, format: html }
+#   load:
+#    - model/base/empleadoBaseTableClass.php
+#    - model/empleadoTableClass.php
+#    - model/base/usuarioBaseTableClass.php
+#    - model/usuarioTableClass.php 
 
 
 

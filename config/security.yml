@@ -10,10 +10,10 @@ shfSecurity:
   exception:
     security: false
 
-default:
-  index:
-    security: true
-    credentials:
-      - [admin, usuario]
-  insert:
-    security: true
+#default:
+#  index:
+#    security: true
+#    credentials:
+#      - [admin, usuario]
+#  insert:
+#    security: true

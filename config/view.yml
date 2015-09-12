@@ -1,30 +1,56 @@
 all:
   favicon: hola.ico
-  title: titulo de la pagina general
+  title: Sistema QuickLoan
   meta:
     - charset="UTF-8"
     - http-equiv="X-UA-Compatible" content="IE=edge"
+    - name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    # Webapp para Android
+    - name="mobile-web-app-capable" content="yes"
+    - name="theme-color" content="#c3c3c3"
+    # Webapp para iOS
+    - name="apple-mobile-web-app-capable" content="yes"
+    - name="apple-mobile-web-app-status-bar-style" content="black"
+    - name="apple-touch-fullscreen" content="yes"
+  link:
+    # ICONOS PARA ANDROID
+    - rel="icon" sizes="36x36" href="http://192.168.1.250/sara/web/img/android/36.png"
+    - rel="icon" sizes="48x48" href="http://192.168.1.250/sara/web/img/android/48.png"
+    - rel="icon" sizes="72x72" href="http://192.168.1.250/sara/web/img/android/72.png"
+    - rel="icon" sizes="96x96" href="http://192.168.1.250/sara/web/img/android/96.png"
+    - rel="icon" sizes="144x144" href="http://192.168.1.250/sara/web/img/android/144.png"
+    - rel="icon" sizes="192x192" href="http://192.168.1.250/sara/web/img/android/192.png"
+    # ICONOS PARA iOS
+    - rel="apple-touch-icon" sizes="76x76" href="http://192.168.1.250/sara/web/img/iOS/Icon-76.png"
+    - rel="apple-touch-icon" sizes="120x120" href="http://192.168.1.250/sara/web/img/iOS/Icon-60@2x.png"
+    - rel="apple-touch-icon" sizes="152x152" href="http://192.168.1.250/sara/web/img/iOS/Icon-76@2x.png"
+    - rel="apple-touch-icon" sizes="180x180" href="http://192.168.1.250/sara/web/img/iOS/Icon-60@3x.png"
   javascript:
-    - jquery-1.11.1.min.js
-    - bootstrap.js
+    - jquery-1.11.3.min.js
+    - bootstrap.min.js
+    - snap.min.js
+    - holder.min.js
     - main.js
   stylesheet:
-    - bootstrap.css
+    - bootstrap.min.css
     - main.css
     - font-awesome.min.css
+    - snap.css
 
 shfSecurity:
   index:
-    title: Identificacion de usuario
     stylesheet:
       - signin.css
+      
+sitioWeb:
+  index:
+    stylesheet:
+      - carousel.css
 
 prestamo:
   empleado:
      stylesheet:
       - ejemplo.css
-
-
 
 default:
   index:

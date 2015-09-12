@@ -5,6 +5,5 @@
     <?php echo \mvc\view\viewClass::genMetas() ?>
     <?php echo \mvc\view\viewClass::genFavicon() ?>
     <?php echo \mvc\view\viewClass::genStylesheet() ?>
-    <?php echo \mvc\view\viewClass::genJavascript() ?>
   </head>
   <body>
