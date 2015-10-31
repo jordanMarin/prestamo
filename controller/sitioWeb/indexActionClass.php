@@ -17,8 +17,12 @@ class indexActionClass extends controller implements controllerActionInterface {
 
   public function execute() {    
     try {
-      
-      $this->defineView('index', 'sitioWeb', session::getInstance()->getFormatOutput());
+      $session = session::getInstance();
+      if ($session->isUserAuthenticated() === true and $session->hasCredential('admin')) {
+        routing::getInstance()->forward('@adminHomepage');
+      } else {
+        $this->defineView('index', 'sitioWeb', session::getInstance()->getFormatOutput());
+      }
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);
       routing::getInstance()->forward('shfSecurity', 'exception');

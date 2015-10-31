@@ -1,5 +1,3 @@
-
-
 <?php use mvc\view\viewClass as view ?>
 <?php use mvc\routing\routingClass as routing ?>
 <?php view::includeComponent('componente', 'menu') ?>
@@ -23,35 +21,3 @@
   </div>
 </div>
 <?php view::includePartial('componente/footer') ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-

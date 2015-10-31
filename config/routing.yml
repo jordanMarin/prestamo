@@ -2,6 +2,10 @@ homepage:
   url:    /
   param:  { module: sitioWeb, action: index, format: html }
 
+adminHomepage:
+  url:    /admin
+  param:  { module: sitioWeb, action: admin, format: html }
+
 shfSecurity_index:
   url:    /signin
   param:  { module: shfSecurity, action: index, format: html }
@@ -260,14 +264,13 @@ banco:
     - model/base/bancoBaseTableClass.php
     - model/bancoTableClass.php
 
-
 banco_banco_create:
   url:    /banco/crear/banco
   param:  { module: banco, action: createBanco, format: html }
   load:
     - model/base/bancoBaseTableClass.php
     - model/bancoTableClass.php
-    - libs/validator/prestamo/createBancoValidatorClass.php
+    - libs/validator/banco/bancoValidatorClass.php
 
 banco_index:
   url:    /banco/index
@@ -275,12 +278,14 @@ banco_index:
   load:
     - model/base/bancoBaseTableClass.php
     - model/bancoTableClass.php
+
 banco_edit:
   url:    /banco/edit
   param:  { module: banco, action: editBanco, format: html }
   load:
    - model/base/bancoBaseTableClass.php
    - model/bancoTableClass.php
+
 banco_update:
   url:    /banco/update
   param:  { module: banco, action: updateBanco, format: html }
@@ -294,6 +299,7 @@ banco_delete:
   load:
    - model/base/bancoBaseTableClass.php
    - model/bancoTableClass.php
+
 # ___________________________________cliente_______________________________
 cliente_lista:
   url:    /cliente/index

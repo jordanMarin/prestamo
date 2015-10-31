@@ -11,18 +11,18 @@ namespace mvc\validator {
    */
   class validatorClass {
 
-    public static function notBlank($variable) {
+    protected static function notBlank($variable) {
       return empty(trim($variable));
     }
 
-    public static function isUnique($id, $deletedLogical, $data, $table) {
+    protected static function isUnique($id, $deletedLogical, $data, $table) {
       $tableObject = '\\' . camelCase::getInstance()->camelCase($table) . "TableClass";
       $fields = array($id);
       eval('$objData = ' . $tableObject . '::getAll($fields, $deletedLogical, NULL, NULL, NULL, NULL, $data);');
       return (count($objData) > 0) ? true : false;
     }
 
-    public static function collection($value, $collection = null, $field = null, $table = null) {
+    protected static function collection($value, $collection = null, $field = null, $table = null) {
       if ($collection !== null) {
         $answer = (array_search($value, $collection) === false) ? false : true ;
       } else {

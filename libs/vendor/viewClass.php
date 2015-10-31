@@ -25,11 +25,11 @@ namespace mvc\view {
       if ($variables !== null and is_array($variables) and count($variables) > 0) {
         extract($variables);
       }
-      include_once configClass::getPathAbsolute() . 'view/' . $partial . '.php';
+      include configClass::getPathAbsolute() . 'view/' . $partial . '.php';
     }
 
     static public function includeComponent($module, $component, $variables = array()) {
-      include_once configClass::getPathAbsolute() . 'controller/' . $module . '/' . $component . 'ComponentClass.php';
+      include configClass::getPathAbsolute() . 'controller/' . $module . '/' . $component . 'ComponentClass.php';
       $componentClass = $component . 'ComponentClass';
       $objComponent = new $componentClass($variables);
       $objComponent->component();

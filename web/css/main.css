@@ -65,3 +65,7 @@ footer {
 .botonera {
   margin-bottom: 20px;
 }
+
+.btn-round {
+  border-radius: 50%;
+}
