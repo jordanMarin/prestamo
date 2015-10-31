@@ -5,7 +5,7 @@ use mvc\model\table\tableBaseClass;
 /**
  * Description of bitacoraBaseTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author jordan<aldany29@hotmail.com>
  */
 class negocioBaseTableClass extends tableBaseClass {
   protected $id;
@@ -21,18 +21,33 @@ class negocioBaseTableClass extends tableBaseClass {
   protected static $package;
 
   const ID = 'id';
-  const NOMBRE= 'nombre';
+  const NOMBRE = 'nombre';
   const NOMBRE_LENGTH = 1024;
-  const DIRECCION= 'direccion';
+  const DIRECCION = 'direccion';
   const DIRECCION_LENGTH = 60;
-  const TELEFONO= 'telefono';
+  const TELEFONO = 'telefono';
   const TELEFON_LENGTH = 15;
-  const INGRESO_MENSUAL= 'ingreso_mensual';
-  const CLIENTE_ID= 'cliente';
+  const INGRESO_MENSUAL = 'ingresos_mensual';
+  const CLIENTE_ID = 'cliente_id';
   const ACTIVED = 'actived';
-const CREATED_AT = 'created_at';
+  const CREATED_AT = 'created_at';
   const DELETED_AT = 'deleted_at';
   const UPDATED_AT = 'updated_at';
+
+  function __construct($id, $nombre, $direccion, $telefono, $ingreso_mensual, $cliente, $actived, $created_at, $updated_at, $deleted_at) {
+    $this->id = $id;
+    $this->nombre = $nombre;
+    $this->direccion = $direccion;
+    $this->telefono = $telefono;
+    $this->ingreso_mensual = $ingreso_mensual;
+    $this->cliente = $cliente;
+    $this->actived = $actived;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
+  }
+
+  
   
     
   

@@ -38,24 +38,39 @@ class codeudorBaseTableClass extends tableBaseClass {
   const IDENTIFICACION_LENGTH = 100;
   const NOMBRE = 'nombre';
   const NOMBRE_LENGTH = 60;
-  const APELLIDO = 'apellido';
+  const APELLIDO = 'apellidos';
   const APELLIDO_LENGTH = 60;
-  const CELULAR_ = 'celular';
-  const CELULAR_LENGTH = 12;
   const TELEFONO = 'telefono';
   const TELEFONO_LENGTH = 15;
-  const CORREO = 'correo';
-  const CORREO_LENGTH = 100;
+  const CELULAR = 'movil';
+  const CELULAR_LENGTH = 12;
   const DIRECCION = 'direccion';
   const DIRECCION_LENGTH = 200;
-  const FECHA_NACIMIENTO = 'fecha_nacimiento';
+   const CORREO = 'correo';
+  const CORREO_LENGTH = 100;
   const LOCALIDAD_ID = 'localidad_id';
   const ACTIVED = 'actived';
   const CREATED_AT = 'created_at';
   const DELETED_AT = 'deleted_at';
   const UPDATED_AT = 'updated_at';
 
-  
+  function __construct($id, $tipo_documento, $identificacion, $nombre, $apellido, $celular, $telefono, $correo, $direccion, $localidad, $actived, $created_at, $updated_at, $deleted_at) {
+    $this->id = $id;
+    $this->tipo_documento = $tipo_documento;
+    $this->identificacion = $identificacion;
+    $this->nombre = $nombre;
+    $this->apellido = $apellido;
+    $this->celular = $celular;
+    $this->telefono = $telefono;
+    $this->correo = $correo;
+    $this->direccion = $direccion;
+    $this->localidad = $localidad;
+    $this->actived = $actived;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
+  }
+
   
   
     

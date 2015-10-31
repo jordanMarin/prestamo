@@ -28,14 +28,15 @@ all:
   javascript:
     - jquery-1.11.3.min.js
     - bootstrap.min.js
-    - snap.min.js
+    #- snap.min.js
     - holder.min.js
     - main.js
   stylesheet:
     - bootstrap.min.css
-    - main.css
+    - bootstrap-theme.min.css
     - font-awesome.min.css
-    - snap.css
+    #- snap.css
+    - main.css
 
 shfSecurity:
   index:
@@ -47,7 +48,7 @@ sitioWeb:
     stylesheet:
       - carousel.css
 
-prestamo:
+empleado:
   empleado:
      stylesheet:
       - ejemplo.css
@@ -71,11 +72,11 @@ prestamo:
   barrio:
     stylesheet:
       - formulario.css
-  prestamo:
+cliente:
   cliente:
     stylesheet:
       - cliente.css
-  prestamo:
+codeudor:
   codeudor:
      stylesheet:
       - codeudor.css
@@ -91,7 +92,7 @@ prestamo:
      stylesheet:
       - localidad.css
    
-  prestamo:
+negocio:
   negocio:
      stylesheet:
       - negocio.css    

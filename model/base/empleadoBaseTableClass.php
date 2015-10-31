@@ -17,10 +17,10 @@ class empleadoBaseTableClass extends tableBaseClass {
   protected $numero_identificacion;
   protected $nombre;
   protected $apellido;
-  protected $celular;
-  protected $telefono;
-  protected $correo;
   protected $direccion;
+  protected $telefono;
+  protected $movil;
+  protected $correo;
   protected $fecha_nacimiento;
   protected $usuario;
   protected $actived;
@@ -36,17 +36,16 @@ class empleadoBaseTableClass extends tableBaseClass {
   const IDENTIFICACION_LENGTH = 100;
   const NOMBRE = 'nombre';
   const NOMBRE_LENGTH = 60;
-  const APELLIDO = 'apellido';
+  const APELLIDO = 'apellidos';
   const APELLIDO_LENGTH = 60;
-  const CELULAR_ = 'celular';
-  const CELULAR_LENGTH = 12;
-  const TELEFONO = 'telefono';
-  const TELEFONO_LENGTH = 15;
-  const CORREO = 'correo';
-  const CORREO_LENGTH = 100;
   const DIRECCION = 'direccion';
   const DIRECCION_LENGTH = 200;
-  const FECHA_NACIMIENTO = 'fecha_nacimiento';
+  const TELEFONO = 'telefono';
+  const TELEFONO_LENGTH = 15;
+  const MOVIL= 'movil';
+  const MOVIL_LENGTH = 12;
+  const CORREO = 'correo';
+  const CORREO_LENGTH = 100;
   const USUARIO_ID = 'usuario_id';
   const ACTIVED = 'actived';
   const CREATED_AT = 'created_at';
@@ -54,8 +53,25 @@ class empleadoBaseTableClass extends tableBaseClass {
   const UPDATED_AT = 'updated_at';
   
   
-  
-  
+  function __construct($id, $tipo_documento, $numero_identificacion, $nombre, $apellido, $direccion, $telefono, $movil, $correo, $fecha_nacimiento, $usuario, $actived, $created_at, $updated_at, $deleted_at) {
+    $this->id = $id;
+    $this->tipo_documento = $tipo_documento;
+    $this->numero_identificacion = $numero_identificacion;
+    $this->nombre = $nombre;
+    $this->apellido = $apellido;
+    $this->direccion = $direccion;
+    $this->telefono = $telefono;
+    $this->movil = $movil;
+    $this->correo = $correo;
+    $this->fecha_nacimiento = $fecha_nacimiento;
+    $this->usuario = $usuario;
+    $this->actived = $actived;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
+  }
+
+    
   
     
   

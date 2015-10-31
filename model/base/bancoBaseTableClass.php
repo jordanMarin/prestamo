@@ -24,15 +24,23 @@ class bancoBaseTableClass extends tableBaseClass {
   protected static $package;
 
   const ID = 'id';
-  const NOMBRE_BARRIO = 'nombre';
-  const NOMBRE_BARRIO_LENGTH = 50;
+  const NOMBRE = 'nombre';
+  const NOMBRE_LENGTH = 50;
   const ACTIVED = 'actived';
   const CREATED_AT = 'created_at';
   const DELETED_AT = 'deleted_at';
   const UPDATED_AT = 'updated_at';
   
+  function __construct($id, $nombre, $actived, $created_at, $updated_at, $deleted_at) {
+    $this->id = $id;
+    $this->nombre = $nombre;
+    $this->actived = $actived;
+    $this->created_at = $created_at;
+    $this->updated_at = $updated_at;
+    $this->deleted_at = $deleted_at;
+  }
 
- 
+  
 
   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
@@ -52,7 +60,7 @@ class bancoBaseTableClass extends tableBaseClass {
    * @return string
    */
   public static function getNameTable() {
-    return 'barrio';
+    return 'banco';
   }
 
   /**

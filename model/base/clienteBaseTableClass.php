@@ -13,7 +13,7 @@ class clienteBaseTableClass extends tableBaseClass {
   protected $tipo_documento;
   protected $numero_identificacion;
   protected $nombre;
-  protected $apellido;
+  protected $apellidos;
   protected $celular;
   protected $telefono;
   protected $correo;
@@ -34,9 +34,9 @@ class clienteBaseTableClass extends tableBaseClass {
   const IDENTIFICACION_LENGTH = 100;
   const NOMBRE = 'nombre';
   const NOMBRE_LENGTH = 60;
-  const APELLIDO = 'apellido';
+  const APELLIDO = 'apellidos';
   const APELLIDO_LENGTH = 60;
-  const CELULAR_ = 'celular';
+  const CELULAR = 'celular';
   const CELULAR_LENGTH = 12;
   const TELEFONO = 'telefono';
   const TELEFONO_LENGTH = 15;
@@ -53,12 +53,12 @@ class clienteBaseTableClass extends tableBaseClass {
   const UPDATED_AT = 'updated_at';
   
   
-  function __construct($id, $tipo_documento, $identificacion, $nombre, $apellido, $celular, $telefono, $correo, $direccion, $fecha_nacimiento, $localidad, $usuario, $actived, $created_at, $updated_at, $deleted_at) {
+  function __construct($id, $tipo_documento, $identificacion, $nombre, $apellidos, $celular, $telefono, $correo, $direccion, $fecha_nacimiento, $localidad, $usuario, $actived, $created_at, $updated_at, $deleted_at) {
     $this->id = $id;
     $this->tipo_documento = $tipo_documento;
     $this->identificacion = $identificacion;
     $this->nombre = $nombre;
-    $this->apellido = $apellido;
+    $this->apellido = $apellidos;
     $this->celular = $celular;
     $this->telefono = $telefono;
     $this->correo = $correo;
