@@ -14,28 +14,26 @@ all:
     - name="apple-touch-fullscreen" content="yes"
   link:
     # ICONOS PARA ANDROID
-    - rel="icon" sizes="36x36" href="http://192.168.1.250/sara/web/img/android/36.png"
-    - rel="icon" sizes="48x48" href="http://192.168.1.250/sara/web/img/android/48.png"
-    - rel="icon" sizes="72x72" href="http://192.168.1.250/sara/web/img/android/72.png"
-    - rel="icon" sizes="96x96" href="http://192.168.1.250/sara/web/img/android/96.png"
-    - rel="icon" sizes="144x144" href="http://192.168.1.250/sara/web/img/android/144.png"
-    - rel="icon" sizes="192x192" href="http://192.168.1.250/sara/web/img/android/192.png"
+    - rel="icon" sizes="36x36" href="img/android/36.png"
+    - rel="icon" sizes="48x48" href="img/android/48.png"
+    - rel="icon" sizes="72x72" href="img/android/72.png"
+    - rel="icon" sizes="96x96" href="img/android/96.png"
+    - rel="icon" sizes="144x144" href="img/android/144.png"
+    - rel="icon" sizes="192x192" href="img/android/192.png"
     # ICONOS PARA iOS
-    - rel="apple-touch-icon" sizes="76x76" href="http://192.168.1.250/sara/web/img/iOS/Icon-76.png"
-    - rel="apple-touch-icon" sizes="120x120" href="http://192.168.1.250/sara/web/img/iOS/Icon-60@2x.png"
-    - rel="apple-touch-icon" sizes="152x152" href="http://192.168.1.250/sara/web/img/iOS/Icon-76@2x.png"
-    - rel="apple-touch-icon" sizes="180x180" href="http://192.168.1.250/sara/web/img/iOS/Icon-60@3x.png"
+    - rel="apple-touch-icon" sizes="76x76" href="img/iOS/Icon-76.png"
+    - rel="apple-touch-icon" sizes="120x120" href="img/iOS/Icon-60@2x.png"
+    - rel="apple-touch-icon" sizes="152x152" href="img/iOS/Icon-76@2x.png"
+    - rel="apple-touch-icon" sizes="180x180" href="img/iOS/Icon-60@3x.png"
   javascript:
     - jquery-1.11.3.min.js
     - bootstrap.min.js
-    #- snap.min.js
     - holder.min.js
     - main.js
   stylesheet:
     - bootstrap.min.css
     - bootstrap-theme.min.css
     - font-awesome.min.css
-    #- snap.css
     - main.css
 
 shfSecurity:
