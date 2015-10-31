@@ -7,10 +7,10 @@ config::setRowGrid(10);
 
 config::setDbHost('localhost');
 config::setDbDriver('pgsql'); // mysql
-config::setDbName('recaudador4');
+config::setDbName('recaudador3'); //recaudador4
 config::setDbPort(5432); // 3306
 config::setDbUser('postgres');
-config::setDbPassword('postgres');
+config::setDbPassword('sqlx32'); //postgres
 // Esto solo es necesario en caso de necesitar un socket para la DB
 config::setDbUnixSocket(null); ///tmp/mysql.sock
 
@@ -29,8 +29,8 @@ if (config::getDbUnixSocket() !== null) {
   );
 }
 
-config::setPathAbsolute('C:/MAMP/htdocs/prestamo/');
-config::setUrlBase('http://sena.recaudador/');
+config::setPathAbsolute('/Applications/MAMP/htdocs/prestamo/');
+config::setUrlBase('http://recaudador.sena.com/');
 
 config::setScope('dev'); // prod
 
@@ -54,11 +54,11 @@ config::setHeaderExcel2007('Content-Type: application/vnd.openxmlformats-officed
 
 config::setCookieNameRememberMe('recaudadorRememberMe');
 config::setCookieNameSite('recaudadorSite');
-config::setCookiePath('C:/MAMP/htdocs/prestamo/web' . config::getIndexFile());
-config::setCookieDomain('http://sena.recaudador/');
+config::setCookiePath(config::getPathAbsolute() . 'web/' . config::getIndexFile());
+config::setCookieDomain('http://recaudador.sena.com/');
 config::setCookieTime(3600 * 8); // una hora en segundo 3600 y por 8 serían 8 horas
 
-config::setDefaultModule('default');
+config::setDefaultModule('sitioWeb');
 config::setDefaultAction('index');
 
 config::setDefaultModuleSecurity('shfSecurity');

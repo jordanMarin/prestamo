@@ -1,5 +1,5 @@
 all:
-  favicon: hola.ico
+  favicon: favicon.ico
   title: Sistema QuickLoan
   meta:
     - charset="UTF-8"

@@ -1,3 +1,5 @@
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\session\sessionClass as session ?>
 <nav class="navbar navbar-inverse navbar-static-top">
   <div class="container">
     <div class="navbar-header">
@@ -14,8 +16,13 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Inicio</a></li>
         <li><a href="#about">Quienes somos</a></li>
-        <li><a href="#contact">Contactenos</a></li>
-        <li><a href="#contact">Iniciar sesión</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#myModalContacto">Contactenos</a></li>
+        <?php if(session::getInstance()->isUserAuthenticated()) : ?>
+        <li><a href="#">Panel de control</a></li>
+        <li><a href="<?php echo routing::getInstance()->getUrlWeb('@shfSecurity_logout') ?>">Cerrar sesión</a></li>
+        <?php else : ?>
+        <li><a href="<?php echo routing::getInstance()->getUrlWeb('@shfSecurity_index') ?>">Iniciar sesión</a></li>
+        <?php endif ?>
       </ul>
     </div>
   </div>
