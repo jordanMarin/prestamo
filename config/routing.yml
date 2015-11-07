@@ -74,6 +74,7 @@ cliente_cliente_create:
     - model/tipo_documentoTableClass.php
     - model/base/localidadBaseTableClass.php
     - model/localidadTableClass.php
+
 cliente_edit:
   url:    /cliente/edit
   param:  { module: cliente, action: editCliente, format: html }
@@ -84,7 +85,6 @@ cliente_edit:
    - model/tipo_documentoTableClass.php
    - model/base/localidadBaseTableClass.php
    - model/localidadTableClass.php
-   
 
 cliente_update:
   url:    /cliente/update

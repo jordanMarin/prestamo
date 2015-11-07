@@ -69,3 +69,11 @@ footer {
 .btn-round {
   border-radius: 50%;
 }
+
+.jumbotron {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 0px;
+  color: inherit;
+  background-color: #eee;
+}

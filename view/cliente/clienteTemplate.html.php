@@ -1,15 +1,10 @@
-
-
-
- 
-
 <?php use mvc\view\viewClass as view ?>
 <?php use mvc\routing\routingClass as routing ?>
 <?php view::includeComponent('componente', 'menu') ?>
 <div class="container container-fluid margenContainer">
   <div class="row">
     <div class="col-lg-3">
-      <?php view::includePartial('componente/menuIzquierdo', array('cliente' => true)) ?>
+      <?php view::includePartial('componente/menuIzquierdo', array('clientes' => true)) ?>
     </div>
     <div class="col-lg-9">
       <div class="panel panel-default">

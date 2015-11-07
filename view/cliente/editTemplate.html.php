@@ -4,7 +4,7 @@
 <div class="container container-fluid margenContainer">
   <div class="row">
     <div class="col-lg-3">
-      <?php view::includePartial('componente/menuIzquierdo') ?>
+      <?php view::includePartial('componente/menuIzquierdo', array('clientes' => true)) ?>
     </div>
     <div class="col-lg-9">
       <div class="panel panel-default">
