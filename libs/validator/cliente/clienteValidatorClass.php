@@ -16,53 +16,41 @@ namespace mvc\validator {
    */
   class clienteValidatorClass extends validatorClass {
 
-    static public function insert($usuario,$password, $tipo_documento,$identificacion,$nombre,$apellido,$celular, $telefono,$correo,$direccion, $fecha_nacimiento,  $localidad) {
-      
-       $flag = false;
-      
+    static public function insert($usuario, $password, $tipo_documento, $identificacion, $nombre, $apellido, $celular, $telefono, $correo, $direccion, $fecha_nacimiento, $localidad) {
+
+      $flag = false;
+
       if (self::notBlank($usuario) === true) {
         $flag = true;
         session::getInstance()->setFlash('inputUsuario', true);
         session::getInstance()->setError('El nombre de usuario es requerido', 'inputUsuario');
-      } else if (is_numeric($usuario)===TRUE) {
+      } else if (is_numeric($usuario) === true) {
         $flag = true;
         session::getInstance()->setFlash('inputUsuario', true);
         session::getInstance()->setError('El usuario no puede ser númerico', 'inputUsuario');
-      } else if(strlen($usuario) > \usuarioTableClass::USER_LENGTH) {
+      } else if (strlen($usuario) > \usuarioTableClass::USER_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputUsuario', true);
         session::getInstance()->setError('El usuario digitado es mayor en cantidad de caracteres a lo permitido', 'inputUser');
-      } else if(self::isUnique(\usuarioTableClass::ID, true, array(\usuarioTableClass::USER => request::getInstance()->getPost('inputUser')), \usuarioTableClass::getNameTable())) {
+      } else if (self::isUnique(\usuarioTableClass::ID, true, array(\usuarioTableClass::USER => $usuario), \usuarioTableClass::getNameTable()) === true) {
         $flag = true;
         session::getInstance()->setFlash('inputUsuario', true);
         session::getInstance()->setError('El usuario digitado ya existe', 'inputUser');
       }
-      
-      
-      
+
+
+
 //      ___________________________________clave____________________
-      
-      $flag = false;
 
       if (self::notBlank($password) === true) {
-        session::getInstance()->setFlash('inputPassword', true);
-      session::getInstance()->setError('El campo es obligatorio', 'inputTipodocumento');}
         $flag = true;
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      $flag = false;
+        session::getInstance()->setFlash('inputPassword', true);
+        session::getInstance()->setError('El campo es obligatorio', 'inputPassword');
+      }
 
       if (self::notBlank($tipo_documento) === true) {
         session::getInstance()->setFlash('inputTipo_documento', true);
-        session::getInstance()->setError('El campo tipo de documento es obligatorio', 'inputTipodocumento');
+        session::getInstance()->setError('El campo tipo de documento es obligatorio', 'inputTipo_documento');
         $flag = true;
 //        ______________________________identificacion____________
       } elseif (self::notBlank($identificacion) === true) {
@@ -94,10 +82,10 @@ namespace mvc\validator {
 
 //        _____________________________________apellido____________________
 
-       if (self::notBlank($apellido) === true) {
-      $flag = true;
-      session::getInstance()->setFlash('inputApellido', true);
-      session::getInstance()->setError('El apellido de cliente es requerido', 'inputUser');
+      if (self::notBlank($apellido) === true) {
+        $flag = true;
+        session::getInstance()->setFlash('inputApellido', true);
+        session::getInstance()->setError('El apellido de cliente es requerido', 'inputUser');
       } else if (is_numeric(request::getInstance()->getPost('inputApellido'))) {
         $flag = true;
         session::getInstance()->setFlash('inputApellido', true);
@@ -108,15 +96,15 @@ namespace mvc\validator {
         session::getInstance()->setError('El cliente digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
       } elseif (strlen($cliente) > \clienteTableClass::APELLIDO_LENGTH) {
         session::getInstance()->setFlash('inputApellido', true);
-      session::getInstance()->setError('El apellido del cliente no debe de ser suprior a ' . \clienteTableClass::APELLIDO_LENGTH . ' caracteres', 'inputApellido');
+        session::getInstance()->setError('El apellido del cliente no debe de ser suprior a ' . \clienteTableClass::APELLIDO_LENGTH . ' caracteres', 'inputApellido');
       }
 
 
 
 //      ___________________________________movil_____________________
-      if (self::notBlank($celular)=== true) {
-      $flag = TRUE;
-       session::getInstance()->setFlash('inputCelular', true);
+      if (self::notBlank($celular) === true) {
+        $flag = TRUE;
+        session::getInstance()->setFlash('inputCelular', true);
         session::getInstance()->setError('El número de celular es requerido o cualquier otro número donde se le pueda contactar', 'inputCelular');
         $flag = TRUE;
       } elseif (strlen($cliente) > \clienteTableClass::CELULAR_LENGTH) {
@@ -160,7 +148,7 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputDireccion', true);
         session::getInstance()->setError('La direccion es obligatorio  por parte de la plataforma', 'inputDireccion');
       }
-//    _______________________________________fecha nacimiento_______________  
+//    _______________________________________fecha nacimiento_______________
 
       $flag = TRUE;
 

@@ -1,85 +1,76 @@
-<?php
-
-use mvc\session\sessionClass as session ?>
-<?php
-use mvc\routing\routingClass as routing ?>
-  <?php
-
-  use mvc\request\requestClass as request ?>
-<?php
-
-use mvc\view\viewClass as view ?>
+<?php use mvc\session\sessionClass as session ?>
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\request\requestClass as request ?>
+<?php use mvc\view\viewClass as view ?>
 <form class="form-horizontal ibody" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('cliente', 'createCliente') ?>">
-      <?php if (isset($objUsuario) == true): ?>
+  <?php if (isset($objUsuario) == true): ?>
     <input name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::ID, true) ?>" value="<?php echo $objUsuario[0]->id ?>" type="hidden">
-      <?php endif ?>
+  <?php endif ?>
   <fieldset>
     <legend>Usuario</legend>
-    
+
     <!-- ----------------------- inputUsuario ----------------------- -->
-    <?php if (session::getInstance()->hasError('inputUsuario')): ?>
-      <?php view::getMessageError('inputUsuario') ?>
-    <?php endif ?>
     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputUsuario')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputUsuario" class="col-sm-2 control-label">Usuario</label>
       <div class="col-sm-10">
         <input autocomplete="off" value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) : (((isset($objUsuario) == true) ? $objUsuario[0]->user_name : '')) ?>" type="text" class="form-control" id="inputUsuario" name="inputUsuario" placeholder="Digite usuario">
-        <?php if(session::getInstance()->hasFlash('inputUsuario')): ?>
-        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <?php if (session::getInstance()->hasFlash('inputUsuario')): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          <p class="help-block"><i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputUsuario') ?></p>
+          <?php session::getInstance()->deleteError('inputUsuario') ?>
         <?php endif ?>
       </div>
     </div>
     <!-- ----------------------- inputUsuario ----------------------- -->
-     <?php if (session::getInstance()->hasError('inputPassword')): ?>
-      <?php view::getMessageError('inputPassword') ?>
-    <?php endif ?>
     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputPassword')) ? 'has-error has-feedback' : '' ?>">
-    <label for="inputPassword" class="col-sm-2 control-label">Contraseña</label>
-    <div class="col-sm-10">
-      <input value="" type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Digite contraseña">
-      <?php if(session::getInstance()->hasFlash('inputPassword')): ?>
-        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      <label for="inputPassword" class="col-sm-2 control-label">Contraseña</label>
+      <div class="col-sm-10">
+        <input value="" type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Digite contraseña">
+        <?php if (session::getInstance()->hasFlash('inputPassword')): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          <p class="help-block"><i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputPassword') ?></p>
+          <?php session::getInstance()->deleteError('inputPassword') ?>
         <?php endif ?>
-    </div>
+      </div>
 
   </fieldset>
   <fieldset>
     <legend><i class="glyphicon glyphicon-phone"></i>Datos del cliente</legend>
-<?php if (session::getInstance()->hasError('inputTipo_documento')): ?>
-            <?php view::getMessageError('inputTipo_documento') ?>
-          <?php endif ?>
+    <?php if (session::getInstance()->hasError('inputTipo_documento')): ?>
+      <?php view::getMessageError('inputTipo_documento') ?>
+    <?php endif ?>
     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputTipo_documento')) ? 'has-error has-feedback' : '' ?>">
 
       <label for="inputTipo_documento" class="col-sm-2 control-label">TIPO DE DOCUMENTO</label>
       <div class="col-sm-10">
         <select class="form-control" name="inputTipo_documento">
           <option value="">Seleccione TIPO DOCUMENTO</option>
-        <?php $tipo_documento = '' ?>
-        <?php foreach ($objTipo_documento as $tipo_documento): ?>
+          <?php $tipo_documento = '' ?>
+          <?php foreach ($objTipo_documento as $tipo_documento): ?>
             <option value="<?php echo $tipo_documento->id ?>"><?php echo $tipo_documento->desc_documento ?></option>
-<?php endforeach ?>
+          <?php endforeach ?>
         </select>
 
-<?php if (session::getInstance()->hasFlash('inputTipo_documento')): ?>
+        <?php if (session::getInstance()->hasFlash('inputTipo_documento')): ?>
           <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
         <?php endif ?>
       </div>
     </div>
-        <?php if (session::getInstance()->hasError('inputIdentificacion')): ?>
+    <?php if (session::getInstance()->hasError('inputIdentificacion')): ?>
       <?php view::getMessageError('inputIdentificacion') ?>
     <?php endif ?>
 
     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputIdentificacion')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputIdentificacion" class="col-sm-2 control-label">NUMERO IDENTIFICASION</label>
       <div class="col-sm-10">
-        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::IDENTIFICACION, TRUE)) : (((isset($objCliente) == true) ? $objCliente[0]->IDENTIFICACION : '')) ?>" type="text" class="form-control" id="inputIdentificacion" name="<?php echo clienteTableClass::getNameField(clienteTableClass::IDENTIFICACION, true) ?>" placeholder="Digite  numero ">
-        <?php if (session::getInstance()->hasFlash('inputidentificacion')): ?>
+        <input value="<?php echo (session::getInstance()->hasFlash('inputIdentificacion') === TRUE) ? request::getInstance()->getPost('inputIdentificacion') : (((isset($objCliente) == true) ? $objCliente[0]->IDENTIFICACION : '')) ?>" type="text" class="form-control" id="inputIdentificacion" name="inputIdentificacion" placeholder="Digite  numero ">
+        <?php if (session::getInstance()->hasFlash('inputIdentificacion')): ?>
           <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
         <?php endif ?>
       </div>
     </div>
-    
-        <?php if (session::getInstance()->hasError('inputNombre')): ?>
+
+    <?php if (session::getInstance()->hasError('inputNombre')): ?>
       <?php view::getMessageError('inputNombre') ?>
     <?php endif ?>
 
@@ -92,8 +83,8 @@ use mvc\view\viewClass as view ?>
         <?php endif ?>
       </div>
     </div>
-    
-    
+
+
     <?php if (session::getInstance()->hasError('inputApellido')): ?>
       <?php view::getMessageError('inputApellido') ?>
     <?php endif ?>
@@ -121,25 +112,25 @@ use mvc\view\viewClass as view ?>
         <?php endif ?>
       </div>
     </div>
-    
-    
-     <?php if (session::getInstance()->hasError('inputtelefono')): ?>
-      <?php view::getMessageError('inputtelefono') ?>
+
+
+    <?php if (session::getInstance()->hasError('inputTelefono')): ?>
+      <?php view::getMessageError('inputTelefono') ?>
     <?php endif ?>
 
-    <div class="form-group <?php echo (session::getInstance()->hasFlash('inputtelefono')) ? 'has-error has-feedback' : '' ?>">
+    <div class="form-group <?php echo (session::getInstance()->hasFlash('inputTelefono')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputTelefono" class="col-sm-2 control-label">TELEFONO</label>
       <div class="col-sm-10">
-        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::TELEFONO, TRUE)) : (((isset($objCliente) == true) ? $objCliente[0]->TELEFONO : '')) ?>"  type="text" class="form-control" id="inputtelefono" name="inputtelefono" placeholder="Digite Numero telefono">
+        <input value="<?php echo (session::getInstance()->hasFlash('inputTelefono') === TRUE) ? request::getInstance()->getPost('inputTelefono') : (((isset($objCliente) == true) ? $objCliente[0]->TELEFONO : '')) ?>"  type="text" class="form-control" id="inputtelefono" name="inputTelefono" placeholder="Digite Numero telefono">
         <?php if (session::getInstance()->hasFlash('inputTelefono')): ?>
           <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
         <?php endif ?>
       </div>
     </div>
 
-    
-    
-     <?php if (session::getInstance()->hasError('inputCorreo')): ?>
+
+
+    <?php if (session::getInstance()->hasError('inputCorreo')): ?>
       <?php view::getMessageError('inputCorreo') ?>
     <?php endif ?>
     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputCorreo')) ? 'has-error has-feedback' : '' ?>">
@@ -151,11 +142,11 @@ use mvc\view\viewClass as view ?>
         <?php endif ?>
       </div>
     </div>
-    
-     <?php if (session::getInstance()->hasError('inputDireccion')): ?>
+
+    <?php if (session::getInstance()->hasError('inputDireccion')): ?>
       <?php view::getMessageError('inputDireccion') ?>
     <?php endif ?>
-    
+
     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputDireccion')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputDireccion" class="col-sm-2 control-label">DIRECCION</label>
       <div class="col-sm-10">
@@ -167,8 +158,8 @@ use mvc\view\viewClass as view ?>
     </div>
 
 
-    
-    
+
+
     <?php if (session::getInstance()->hasError('inputFecha_nacimiento')): ?>
       <?php view::getMessageError('inputFecha_nacimiento') ?>
     <?php endif ?>
@@ -181,58 +172,53 @@ use mvc\view\viewClass as view ?>
         <?php endif ?>
       </div>
     </div>
-    
-      <?php if (session::getInstance()->hasError('inputLocalidad')): ?>
+
+    <?php if (session::getInstance()->hasError('inputLocalidad')): ?>
       <?php view::getMessageError('inputLocalidad') ?>
     <?php endif ?>
-     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputLocalidad')) ? 'has-error has-feedback' : '' ?>">
-    <label for="inputLocalidad" class="col-sm-2 control-label">LOCALIDAD</label>
-    <div class="col-sm-10">
-      <select class="form-control" name="inputLocalidad">
-        <option value="">Seleccione LOCALIDAD</option>
-      <?php $localidad = '' ?>
-      <?php foreach ($objLocalidad as $localidad): ?>
-          <option value="<?php echo $localidad->id ?>"><?php echo $localidad->nombre ?></option>
-<?php endforeach ?>
-      </select>
+    <div class="form-group <?php echo (session::getInstance()->hasFlash('inputLocalidad')) ? 'has-error has-feedback' : '' ?>">
+      <label for="inputLocalidad" class="col-sm-2 control-label">LOCALIDAD</label>
+      <div class="col-sm-10">
+        <select class="form-control" name="inputLocalidad">
+          <option value="">Seleccione LOCALIDAD</option>
+          <?php $localidad = '' ?>
+          <?php foreach ($objLocalidad as $localidad): ?>
+            <option value="<?php echo $localidad->id ?>"><?php echo $localidad->nombre ?></option>
+          <?php endforeach ?>
+        </select>
 
-<?php if (session::getInstance()->hasFlash('inputLocalidad')): ?>
-        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-<?php endif ?>
-    </div>
-
-
-
-
-    <!--
-     <label for="inputUsuario" class="col-sm-2 control-label">USUARIO</label>
-     <div class="col-sm-10">
-       <select class="form-control" name="<?php echo clienteTableClass::getNameField(clienteTableClass::USUARIO_ID, true) ?>">
-         <option value="">Seleccione USUARIO</option>
-    <?php $localidad = '' ?>
-    <?php foreach ($objUsuari as $usuario): ?>
-                 <option value="<?php echo $usuario->id ?>"><?php echo $usuario->usuario_id ?></option>
-<?php endforeach ?>
-       </select>
-
-<?php if (session::getInstance()->hasFlash('inputLocalidad')): ?>
-               <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-<?php endif ?>
-     </div>
-    -->
-
-
-
-
-
-
-
-    <div class="form-group text-right">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary">Insertar</button>
-        <a href="<?php echo routing::getInstance()->getUrlWeb('@cliente_lista') ?>" class="btn btn-default">Cancelar</a>
+        <?php if (session::getInstance()->hasFlash('inputLocalidad')): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <?php endif ?>
       </div>
+
+
+
+
+      <!--
+       <label for="inputUsuario" class="col-sm-2 control-label">USUARIO</label>
+       <div class="col-sm-10">
+         <select class="form-control" name="<?php echo clienteTableClass::getNameField(clienteTableClass::USUARIO_ID, true) ?>">
+           <option value="">Seleccione USUARIO</option>
+      <?php $localidad = '' ?>
+      <?php foreach ($objUsuari as $usuario): ?>
+                     <option value="<?php echo $usuario->id ?>"><?php echo $usuario->usuario_id ?></option>
+      <?php endforeach ?>
+         </select>
+  
+      <?php if (session::getInstance()->hasFlash('inputLocalidad')): ?>
+                   <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+      <?php endif ?>
+       </div>
+      -->
     </div>
+
+      <div class="form-group text-right">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-primary">Insertar</button>
+          <a href="<?php echo routing::getInstance()->getUrlWeb('@cliente_lista') ?>" class="btn btn-default">Cancelar</a>
+        </div>
+      </div>
 
   </fieldset>
 </form>
