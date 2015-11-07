@@ -19,7 +19,20 @@
     </div>
 
 
+<label for="inputLocalidad" class="col-sm-2 control-label">LOCALIDAD</label>
+      <div class="col-sm-10">
+        <select class="form-control" name="<?php echo barrioTableClass::getNameField(barrioTableClass::LOCALIDAD_ID, true) ?>">
+          <option value="">Seleccione LOCALIDAD</option>
+          <?php $objCiudad = '' ?>
+          <?php foreach ($objCiudad as $localidad): ?>
+            <option value="<?php echo $localidad->id ?>"><?php echo $localidad->nombre  ?></option>
+          <?php endforeach ?>
+        </select>
 
+        <?php if (session::getInstance()->hasFlash('inputLocalidad')): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <?php endif ?>
+      </div>
 
 
 

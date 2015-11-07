@@ -29,7 +29,7 @@ class negocioActionClass extends controllerClass implements controllerActionInte
 
       $this->objCliente = clienteTableClass::getAll($fields1);
 
-      $this->defineView('formNegocio','negocio', session::getInstance()->getFormatOutput());
+      $this->defineView('negocio','negocio', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);
       routing::getInstance()->forward('shfSecurity', 'exception');

@@ -11,12 +11,13 @@
         <div class="panel-body">
           <!-- TITULO -->
           <div class="page-header">
-            <h1><i class="fa fa-fw fa-users"></i>Codeudor</h1>
+            
+            <h1><i class="fa fa-fw fa-child"></i> Codeudor <a href="<?php echo routing::getInstance()->getUrlWeb('@codeudor_codeudor') ?>" class="btn btn-success btn-sm btn-round"><i class="fa fa-plus"></i></a></h1>
           </div>
           <!-- TITULO -->
           <!-- TABLA -->
           <div class="botonera">
-            <a href="<?php echo routing::getInstance()->getUrlWeb('@codeudor_codeudor') ?>" class="btn btn-success btn-sm"><i class="fa fa-fw fa-plus"></i> Nuevo</a>
+          
           </div>
           <?php view::includeHandlerMessage() ?>
           <table class="table">

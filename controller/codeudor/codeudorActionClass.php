@@ -40,7 +40,7 @@ class codeudorActionClass extends controllerClass implements controllerActionInt
 
       $this->objLocalidad = localidadTableClass::getAll($fields1);
       $this->objTipo_documento = tipo_documentoTableClass::getAll($fields);
-      $this->defineView('formCodeudor','codeudor', session::getInstance()->getFormatOutput());
+      $this->defineView('codeudor','codeudor', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);
       routing::getInstance()->forward('shfSecurity', 'exception');

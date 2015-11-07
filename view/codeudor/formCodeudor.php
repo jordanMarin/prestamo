@@ -5,7 +5,7 @@
 
 <form class="form-horizontal ibody" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('codeudor','createCodeudor') ?>">
   <fieldset>
-    <legend><i class="glyphicon glyphicon-phone"></i> Nuevo codeudor</legend>
+    
     <?php if(session::getInstance()->hasError('inputCodeudor')): ?>
     <?php view::getMessageError('inputCodeudor') ?>
     <?php endif ?>
@@ -45,11 +45,11 @@
     
      
     
-    <div class="form-group <?php echo (session::getInstance()->hasFlash('inputnombre')) ? 'has-error has-feedback' : '' ?>">
+    <div class="form-group <?php echo (session::getInstance()->hasFlash('inputNombre')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputnombre" class="col-sm-2 control-label">NOMBRE</label>
       <div class="col-sm-10">
-        <input value="<?php echo (request::getInstance()->hasPost('inputnombre')) ? request::getInstance()->getPost('inputnombre') : '' ?>" type="text" class="form-control" id="inputnombre" name="<?php echo codeudorTableClass::getNameField(codeudorTableClass::NOMBRE, TRUE)?>" placeholder="digite el nombre">
-        <?php if(session::getInstance()->hasFlash('inputnombre')): ?>
+        <input value="<?php echo (request::getInstance()->hasPost('inputNombre')) ? request::getInstance()->getPost('inputNombre') : '' ?>" type="text" class="form-control" id="inputNombre" name="<?php echo codeudorTableClass::getNameField(codeudorTableClass::NOMBRE, TRUE)?>" placeholder="digite el nombre">
+        <?php if(session::getInstance()->hasFlash('inputNombre')): ?>
         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
         <?php endif ?>
       </div>
@@ -78,7 +78,7 @@
       <div class="form-group <?php echo (session::getInstance()->hasFlash('inputmovil')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputmovil" class="col-sm-2 control-label">MOVIL</label>
       <div class="col-sm-10">
-        <input value="<?php echo (request::getInstance()->hasPost('inputmovil')) ? request::getInstance()->getPost('inputmovil') : '' ?>" type="text" class="form-control" id="inputmovil" name="<?php echo codeudorTableClass::getNameField(codeudorTableClass::CELULAR_,TRUE)?>" placeholder="Digite numero de movil">
+        <input value="<?php echo (request::getInstance()->hasPost('inputmovil')) ? request::getInstance()->getPost('inputmovil') : '' ?>" type="text" class="form-control" id="inputmovil" name="<?php echo codeudorTableClass::getNameField(codeudorTableClass::CELULAR,TRUE)?>" placeholder="Digite numero de movil">
         <?php if(session::getInstance()->hasFlash('inputmovil')): ?>
         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
         <?php endif ?>
@@ -149,7 +149,7 @@
     <div class="form-group text-right">
       <div class="col-sm-offset-2 col-sm-10">
         <button type="submit" class="btn btn-primary">Insertar</button>
-        <a href="#" class="btn btn-default">Cancelar</a>
+        <a href="<?php echo routing::getInstance()->getUrlWeb('@codeudor_listado') ?>" class="btn btn-default">Cancelar</a>
       </div>
     </div>
 

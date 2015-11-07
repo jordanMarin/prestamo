@@ -1,4 +1,27 @@
+
+
+
+
+
 <?php use mvc\view\viewClass as view ?>
-<div class="container container-fluid">
-  <?php view::includePartial('barrio/formBarrio', array('objCiudad' => $objCiudad)) ?>
+<?php use mvc\routing\routingClass as routing ?>
+<?php view::includeComponent('componente', 'menu') ?>
+<div class="container container-fluid margenContainer">
+  <div class="row">
+    <div class="col-lg-3">
+      <?php view::includePartial('componente/menuIzquierdo', array('barrio' => true)) ?>
+    </div>
+    <div class="col-lg-9">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <!-- TITULO -->
+          <div class="page-header">
+            <h1><i class="fa fa-fw fa-users"></i> Nuevo barrio</h1>
+          </div>
+         <?php view::includePartial('barrio/formBarrio', array('objCiudad' => $objCiudad)) ?>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<?php view::includePartial('componente/footer') ?>

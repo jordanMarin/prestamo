@@ -70,14 +70,7 @@ prestamo:
   barrio:
     stylesheet:
       - formulario.css
-cliente:
-  cliente:
-    stylesheet:
-      - cliente.css
-codeudor:
-  codeudor:
-     stylesheet:
-      - codeudor.css
+
 
       
   prestamo:
@@ -90,10 +83,7 @@ codeudor:
      stylesheet:
       - localidad.css
    
-negocio:
-  negocio:
-     stylesheet:
-      - negocio.css    
+  
       
       
   prestamo:

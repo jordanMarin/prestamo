@@ -11,7 +11,7 @@
         <div class="panel-body">
           <!-- TITULO -->
           <div class="page-header">
-            <h1><i class="fa fa-fw fa-user"></i> Editar negocio</h1>
+            <h1><i class="fa fa-fw fa-briefcase"></i> Editar negocio</h1>
           </div>
           <!-- TITULO -->
           <?php view::includePartial('negocio/formEdit', array('objNegocio' => $objNegocio)) ?>

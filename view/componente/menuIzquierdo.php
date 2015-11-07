@@ -5,13 +5,13 @@
     <!--https://fortawesome.github.io/Font-Awesome/icons/-->
     <a href="#" class="list-group-item <?php echo isset($planilla) ? 'active' : '' ?>"><i class="fa fa-fw fa-circle"></i> Gestionar planilla díaria</a>
     <a href="<?php echo routing::getInstance()->getUrlWeb('@banco_index') ?>" class="list-group-item <?php echo isset($bancos) ? 'active' : '' ?>"><i class="fa fa-fw fa-bank"></i> Bancos</a>
-    <a href="#" class="list-group-item <?php echo isset($barrios) ? 'active' : '' ?>"><i class="fa fa-fw fa-circle"></i> Barrios</a>
+    <a href="" class="list-group-item <?php echo isset($barrios) ? 'active' : '' ?>"><i class="fa fa-fw fa-circle"></i> Barrios</a>
     <a href="#" class="list-group-item <?php echo isset($bitacora) ? 'active' : '' ?>"><i class="fa fa-fw fa-circle"></i> Bitácora del sistema</a>
-    <a href="#" class="list-group-item <?php echo isset($clientes) ? 'active' : '' ?>"><i class="fa fa-fw fa-users"></i> Clientes</a>
-    <a href="#" class="list-group-item <?php echo isset($codeudores) ? 'active' : '' ?>"><i class="fa fa-fw fa-circle"></i> Codeudores</a>
-    <a href="#" class="list-group-item <?php echo isset($empleados) ? 'active' : '' ?>"><i class="fa fa-fw fa-circle"></i> Empleados</a>
+    <a href="<?php echo routing::getInstance()->getUrlWeb('@cliente_lista') ?>" class="list-group-item <?php echo isset($clientes) ? 'active' : '' ?>"><i class="fa fa-fw fa-users"></i> Clientes</a>
+    <a href="<?php echo routing::getInstance()->getUrlWeb('@codeudor_listado') ?>" class="list-group-item <?php echo isset($codeudores) ? 'active' : '' ?>"><i class="fa fa-fw fa-child"></i> Codeudores</a>
+    <a href="<?php echo routing::getInstance()->getUrlWeb('@empleado_listado') ?>" class="list-group-item <?php echo isset($empleados) ? 'active' : '' ?>"><i class="fa fa-fw  fa-street-view"></i> Empleados</a>
     <a href="#" class="list-group-item <?php echo isset($localidades) ? 'active' : '' ?>"><i class="fa fa-fw fa-circle"></i> Localidades</a>
-    <a href="#" class="list-group-item <?php echo isset($negocios) ? 'active' : '' ?>"><i class="fa fa-fw fa-circle"></i> Negocios de los clientes</a>
+    <a href="<?php echo routing::getInstance()->getUrlWeb('@negocio_listado') ?>" class="list-group-item <?php echo isset($negocios) ? 'active' : '' ?>"><i class="fa fa fa-fw fa-home"></i> Negocios de los clientes</a>
   </div>
 </div>
 

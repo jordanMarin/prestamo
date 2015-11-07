@@ -11,7 +11,7 @@
         <div class="panel-body">
           <!-- TITULO -->
           <div class="page-header">
-            <h1><i class="fa fa-fw fa-user"></i> Editar cliente</h1>
+            <h1><i class="fa fa-fw fa-users"></i> Editar cliente</h1>
           </div>
           <!-- TITULO -->
           <?php view::includePartial('cliente/formEdit', array('objCliente' => $objCliente,'objLocalidad'=>$objLocalidad, 'objTipoDocumento' => $objTipoDocumento)) ?>

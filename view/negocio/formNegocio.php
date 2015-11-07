@@ -5,7 +5,7 @@
 
 <form class="form-horizontal ibody" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('negocio','createNegocio') ?>">
   <fieldset>
-    <legend><i class="glyphicon glyphicon-phone"></i> Nuevo negocio</legend>
+    
     <?php if(session::getInstance()->hasError('inputNegocio')): ?>
     <?php view::getMessageError('inputNegocio') ?>
     <?php endif ?>

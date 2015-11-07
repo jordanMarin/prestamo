@@ -53,7 +53,7 @@ class empleadoActionClass extends controllerClass implements controllerActionInt
        $this->objTipo_documento = tipo_documentoTableClass::getAll($fields);
 //    $this->objCargo = cargoTableClass::getAll($fields1);
 //      $this->objUsuario=  usuarioTableClass::getAll($fields3);
-      $this->defineView('formEmpleado','empleado', session::getInstance()->getFormatOutput());
+      $this->defineView('empleado','empleado', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);
       routing::getInstance()->forward('shfSecurity', 'exception');

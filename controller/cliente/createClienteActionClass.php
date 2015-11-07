@@ -7,7 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-use mvc\validator\createClienteValidatorClass as validate;
+use mvc\validator\clienteValidatorClass as validate;
 
 /**
  * Description of createClienteActionClass
@@ -19,6 +19,9 @@ class createClienteActionClass extends controllerClass implements controllerActi
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
+        
+       
+        
 
         // primero hay que crear el cliente y luego si los datos!!!
 
@@ -31,7 +34,7 @@ class createClienteActionClass extends controllerClass implements controllerActi
         
         $usuario_id = usuarioTableClass::insert($data1);
 
-        //validate::validateInsert();
+       
         $data = array(
             clienteTableClass::TIPO_DOCUMENTO_ID => request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::TIPO_DOCUMENTO_ID, true)),
             clienteTableClass::IDENTIFICACION => request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::IDENTIFICACION, true)),
@@ -45,10 +48,11 @@ class createClienteActionClass extends controllerClass implements controllerActi
             clienteTableClass::LOCALIDAD_ID => request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::LOCALIDAD_ID, true)),
             clienteTableClass::USUARIO_ID => $usuario_id
         );
-
+        
         clienteTableClass::insert($data);
         session::getInstance()->setSuccess('El cliente fue creado exitosamente');
         routing::getInstance()->redirect('@cliente_lista');
+        
       }
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);

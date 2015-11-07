@@ -69,7 +69,7 @@ cliente_cliente_create:
   load:
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
-    - libs/validator/prestamo/createClienteValidatorClass.php
+    - libs/validator/prestamo/clienteValidatorClass.php
     - model/base/tipo_documentoBaseTableClass.php
     - model/tipo_documentoTableClass.php
     - model/base/localidadBaseTableClass.php
@@ -118,7 +118,7 @@ codeudor_codeudor_create:
   load:
     - model/base/codeudorBaseTableClass.php
     - model/codeudorTableClass.php
-    - libs/validator/prestamo/createCodeudorValidatorClass.php
+    - libs/validator/codeudor/codeudorValidatorClass.php
     - model/base/tipo_documentoBaseTableClass.php
     - model/tipo_documentoTableClass.php
     - model/base/localidadBaseTableClass.php
@@ -299,7 +299,27 @@ banco_delete:
   load:
    - model/base/bancoBaseTableClass.php
    - model/bancoTableClass.php
+   
+   
+#   _________________________barrio__________________
+barrio:
+  url: /barrio
+  param:  { module: barrio, action: barrio, format: html }
+  load:
+    - model/base/barrioBaseTableClass.php
+    - model/barrioTableClass.php
+    - model/base/localidadBaseTableClass.php
+    - model/localidadTableClass.php
 
+barrio_barrio_create:
+  url:    /barrio/crear/barrio
+  param:  { module: barrio, action: createBarrio, format: html }
+  load:
+    - model/base/barrioBaseTableClass.php
+    - model/barrioTableClass.php
+    - model/base/localidadBaseTableClass.php
+    - model/localidadTableClass.php
+    - libs/validator/barrio/barrioValidatorClass.php
 # ___________________________________cliente_______________________________
 cliente_lista:
   url:    /cliente/index

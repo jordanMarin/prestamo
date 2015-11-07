@@ -50,7 +50,7 @@ class clienteActionClass extends controllerClass implements controllerActionInte
       $this->objLocalidad = localidadTableClass::getAll($fields1);
       $this->objTipo_documento = tipo_documentoTableClass::getAll($fields2);
 //      $this->objUsuario=  usuarioTableClass::getAll($fields3);
-      $this->defineView('formCliente','cliente', session::getInstance()->getFormatOutput());
+      $this->defineView('cliente','cliente', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       session::getInstance()->setFlash('exc', $exc);
       routing::getInstance()->forward('shfSecurity', 'exception');
