@@ -69,7 +69,7 @@ cliente_cliente_create:
   load:
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
-    - libs/validator/prestamo/clienteValidatorClass.php
+    - libs/validator/cliente/clienteValidatorClass.php
     - model/base/tipo_documentoBaseTableClass.php
     - model/tipo_documentoTableClass.php
     - model/base/localidadBaseTableClass.php

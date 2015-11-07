@@ -33,8 +33,31 @@ class createClienteActionClass extends controllerClass implements controllerActi
         );
         
         $usuario_id = usuarioTableClass::insert($data1);
-
+        
+        $usuario = request::getInstance()->getPost('inputUsuario');
+        
+        $password= request::getInstance()->getPost('inputPassword');
+        $tipo_documento = request::getInstance()->getPost('inputTipo_documneto');
+        $identificacion = request::getInstance()->getPost('inputIdentificacion');
+        $nombre = request::getInstance()->getPost('inputNombre');
+        
+        $apellido = request::getInstance()->getPost('inputApellido');
+        
+        $celular = request::getInstance()->getPost('inputCelular');
+        
+        $telefono = request::getInstance()->getPost('inputTelefono');
+        
+        $correo = request::getInstance()->getPost('inputCorreo');
+        
+        $direccion = request::getInstance()->getPost('inputDireccion');
+        
+        $fecha_nacimiento = request::getInstance()->getPost('inputFecha_nacimiento');
+        
+        $localidad = request::getInstance()->getPost('inputLocalidad');
+        
        
+        
+        
         $data = array(
             clienteTableClass::TIPO_DOCUMENTO_ID => request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::TIPO_DOCUMENTO_ID, true)),
             clienteTableClass::IDENTIFICACION => request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::IDENTIFICACION, true)),
@@ -48,7 +71,7 @@ class createClienteActionClass extends controllerClass implements controllerActi
             clienteTableClass::LOCALIDAD_ID => request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::LOCALIDAD_ID, true)),
             clienteTableClass::USUARIO_ID => $usuario_id
         );
-        
+        validate::insert($usuario,$password, $tipo_documento,$identificacion,$nombre,$apellido,$celular, $telefono,$correo,$direccion, $fecha_nacimiento,  $localidad);
         clienteTableClass::insert($data);
         session::getInstance()->setSuccess('El cliente fue creado exitosamente');
         routing::getInstance()->redirect('@cliente_lista');
