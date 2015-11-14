@@ -7,8 +7,8 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-use mvc\validator\createClienteValidatorClass as validate;
 
+use mvc\validator\empleadoValidatorClass as validate;
 /**
  * Description of createEmpleadoActionClass
  *
@@ -20,13 +20,33 @@ class createEmpleadoActionClass extends controllerClass implements controllerAct
 public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
+        
+        
+        $usuario = request::getInstance()->getPost('inputUsuario');
+        $password = request::getInstance()->getPost('inputPassword');
+        $tipo_documento = request::getInstance()->getPost('inputTipo_documento');
+        $identificacion = request::getInstance()->getPost('inputIdentificacion');
+        $nombre = request::getInstance()->getPost('inputNombre');
+        $apellido = request::getInstance()->getPost('inputApellido');
+        $direccion = request::getInstance()->getPost('inputDireccion');
+         $telefono = request::getInstance()->getPost('inputTelefono');
+        $celular = request::getInstance()->getPost('inputCelular');
+       
+        $correo = request::getInstance()->getPost('inputCorreo');
+        
+        
+      
+
+        validate::insert($usuario, $password, $tipo_documento, $identificacion, $nombre, $apellido, $celular, $telefono, $correo, $direccion);
+
 
         // primero hay que crear el cliente y luego si los datos!!!
 
         $data = array(
             //usuarioTableClass::LAST_LOGIN_AT => date(config::getFormatTimestamp()),
-            usuarioTableClass::USER => request::getInstance()->getPost('inputUsuario'),
-            usuarioTableClass::PASSWORD => md5(request::getInstance()->getPost('inputPassword')),
+             usuarioTableClass::USER => $usuario,
+            usuarioTableClass::PASSWORD => md5($password),
+            usuarioTableClass::LAST_LOGIN_AT => date(config::getFormatTimestamp()),
             '__sequence' => 'usuario_id_seq'
         );
         
@@ -34,14 +54,14 @@ public function execute() {
 
         //validate::validateInsert();
         $data1 = array(
-           empleadoTableClass::TIPO_DOCUMENTO_ID=> request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::TIPO_DOCUMENTO_ID,true)),  
-          empleadoTableClass::IDENTIFICACION=> request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::IDENTIFICACION,true)),
-          empleadoTableClass::NOMBRE=> request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::NOMBRE,true)),
-          empleadoTableClass::APELLIDO=> request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::APELLIDO,true)),
-          empleadoTableClass::DIRECCION=> request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::DIRECCION,true)),
-          empleadoTableClass::TELEFONO=> request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::TELEFONO,true)),
-          empleadoTableClass::MOVIL => request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::MOVIL,true)),
-          empleadoTableClass::CORREO=> request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::CORREO,true)),
+           empleadoTableClass::TIPO_DOCUMENTO_ID=>$tipo_documento ,  
+          empleadoTableClass::IDENTIFICACION=>$identificacion,
+          empleadoTableClass::NOMBRE=>$nombre,
+          empleadoTableClass::APELLIDO=>$apellido ,
+          empleadoTableClass::DIRECCION=>$direccion,
+          empleadoTableClass::TELEFONO=> $telefono,
+          empleadoTableClass::MOVIL =>$celular,
+          empleadoTableClass::CORREO=>$correo,
          
           empleadoTableClass::USUARIO_ID=>$usuario_id
               

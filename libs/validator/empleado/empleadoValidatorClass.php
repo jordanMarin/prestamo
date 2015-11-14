@@ -14,9 +14,9 @@ namespace mvc\validator {
    *
    * @author Jordan Marin
    */
-  class clienteValidatorClass extends validatorClass {
+  class empleadoValidatorClass extends validatorClass {
 
-    static public function insert($usuario, $password, $tipo_documento, $identificacion, $nombre, $apellido, $celular, $telefono, $correo, $direccion, $fecha_nacimiento, $localidad) {
+    static public function insert($usuario, $password, $tipo_documento, $identificacion, $nombre, $apellido, $celular, $telefono, $correo, $direccion) {
 
       $flag = false;
 
@@ -61,7 +61,7 @@ namespace mvc\validator {
          session::getInstance()->setError('El campo identificacion  es obligatorio', 'inputIdentificacion');}
       
       
-      elseif (self::isUnique(\clienteTableClass::ID, true, array(\clienteTableClass::IDENTIFICACION => $cliente), \clienteTableClass::getNameTable()) === true) {
+      elseif (self::isUnique(\clienteTableClass::ID, true, array(\empleadoTableClass::IDENTIFICACION=> $identificacion), \empleadoTableClass::getNameTable()) === true) {
         session::getInstance()->setFlash('inputIdentificacion', true);
         session::getInstance()->setError('El numero identificacion  ya existe en la base de datos', 'inputIdentificacion');
         $flag = true;
@@ -78,9 +78,9 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);
         session::getInstance()->setError('El nombre del cliente no puede ser númerico', 'inputNombre');
-      } elseif (strlen($cliente) > \clienteTableClass::NOMBRE_LENGTH) {
+      } elseif (strlen($cliente) > \empleadoTableClass::NOMBRE_LENGTH) {
         session::getInstance()->setFlash('inputNombre', true);
-        session::getInstance()->setError('El nombre del cliente no debe de ser suprior a ' . \clienteTableClass::NOMBRE_LENGTH . ' caracteres', 'inputNombre');
+        session::getInstance()->setError('El nombre del cliente no debe de ser suprior a ' . \empleadoTableClass::NOMBRE_LENGTH . ' caracteres', 'inputNombre');
       }
 
 
@@ -94,28 +94,23 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputApellido', true);
         session::getInstance()->setError('El apellido del cliente no puede ser númerico', 'inputApellido');
-      } else if (strlen(request::getInstance()->getPost('inputApellido')) > \clienteTableClass::APELLIDO_LENGTH) {
+      } else if (strlen(request::getInstance()->getPost('inputApellido')) > \empleadoTableClass::APELLIDO_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputApellido', true);
         session::getInstance()->setError('El cliente digitado es mayor en cantidad de caracteres a lo permitido', 'inputApellido');
-      } elseif (strlen($cliente) > \clienteTableClass::APELLIDO_LENGTH) {
+      } elseif (strlen($cliente) > \empleadoTableClass::APELLIDO_LENGTH) {
         session::getInstance()->setFlash('inputApellido', true);
-        session::getInstance()->setError('El apellido del cliente no debe de ser suprior a ' . \clienteTableClass::APELLIDO_LENGTH . ' caracteres', 'inputApellido');
+        session::getInstance()->setError('El apellido del cliente no debe de ser suprior a ' . \empleadoTableClass::APELLIDO_LENGTH . ' caracteres', 'inputApellido');
       }
 
+//____________________________________________direccion_____________________
 
+      $flag = TRUE;
 
-//      ___________________________________movil_____________________
-      if (self::notBlank($celular) === true) {
-        $flag = TRUE;
-        session::getInstance()->setFlash('inputCelular', true);
-        session::getInstance()->setError('El número de celular es requerido o cualquier otro número donde se le pueda contactar', 'inputCelular');
-        $flag = TRUE;
-      } elseif (strlen($cliente) > \clienteTableClass::CELULAR_LENGTH) {
-        session::getInstance()->setFlash('inputCelular', true);
-        session::getInstance()->setError('El número de contacto no puede exceder el máximo de caracteres permitidos ' . \clienteTableClass::CELULAR_LENGTH . ' caracteres', 'inputCelular');
+      if (self::notBlank($direccion) === true) {
+        session::getInstance()->setFlash('inputDireccion', true);
+        session::getInstance()->setError('La direccion es obligatorio  por parte de la plataforma', 'inputDireccion');
       }
-
 //      ______________________________________telefono_________________
 
 
@@ -125,10 +120,22 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputTelefono', true);
         session::getInstance()->setError('El número de telefono es requerido o cualquier otro número donde se le pueda contactar', 'inputTelefono');
         $flag = TRUE;
-      } elseif (strlen($celular) > \clienteTableClass::TELEFONO_LENGTH) {
+      } elseif (strlen($celular) > \empleadoTableClass::TELEFONO_LENGTH) {
         session::getInstance()->setFlash('inputTelefono', true);
-        session::getInstance()->setError('El número de contacto no puede exceder el máximo de caracteres permitidos ' . \clienteTableClass::TELEFONO_LENGTH . ' caracteres', 'inputTelefono');
+        session::getInstance()->setError('El número de contacto no puede exceder el máximo de caracteres permitidos ' . \empleadoTableClass::ELEFONO_LENGTH . ' caracteres', 'inputTelefono');
       }
+//      ___________________________________movil_____________________
+      if (self::notBlank($celular) === true) {
+        $flag = TRUE;
+        session::getInstance()->setFlash('inputCelular', true);
+        session::getInstance()->setError('El número de celular es requerido o cualquier otro número donde se le pueda contactar', 'inputCelular');
+        $flag = TRUE;
+      } elseif (strlen($cliente) > \empleadoTableClass::MOVIL_LENGTH) {
+        session::getInstance()->setFlash('inputCelular', true);
+        session::getInstance()->setError('El número de contacto no puede exceder el máximo de caracteres permitidos ' . \empleadoTableClass::MOVIL_LENGTH. ' caracteres', 'inputCelular');
+      }
+
+
 
 
 //      ____________________________________correo___________________
@@ -140,33 +147,16 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputCorreo', true);
         session::getInstance()->setError('El correo es obligatorio para el contacto por parte de la plataforma', 'inputCorreo');
         $flag = TRUE;
-      } elseif (strlen($correo) > \clienteTableClass::CORREO_LENGTH) {
+      } elseif (strlen($correo) > \empleadoTableClass::CORREO_LENGTH) {
         session::getInstance()->setFlash('inputCorreo', true);
-        session::getInstance()->setError('El correo no puede exceder el máximo de caracteres permitidos ' . \clienteTableClass::CORREO_LENGTH . ' caracteres', 'inputCorreo');
+        session::getInstance()->setError('El correo no puede exceder el máximo de caracteres permitidos ' . \empleadoTableClass::CORREO_LENGTH . ' caracteres', 'inputCorreo');
       }
-//____________________________________________direccion_____________________
-
-      $flag = TRUE;
-
-      if (self::notBlank($direccion) === true) {
-        session::getInstance()->setFlash('inputDireccion', true);
-        session::getInstance()->setError('La direccion es obligatorio  por parte de la plataforma', 'inputDireccion');
-      }
-//    _______________________________________fecha nacimiento_______________
-
-      $flag = TRUE;
-
-      if (self::notBlank($fecha_nacimiento) === true) {
-        session::getInstance()->setFlash('inputFecha_nacimiento', true);
-        session::getInstance()->setError('La fecha nacimiento es obligatorio  por parte de la plataforma', 'inputFecha_nacimiento');
-      }
-
 
 
 
       if ($flag === true) {
         //request::getInstance()->setMethod('GET');
-        routing::getInstance()->forward('cliente', 'cliente');
+        routing::getInstance()->forward('empleado', 'empleado');
       }
     }
 

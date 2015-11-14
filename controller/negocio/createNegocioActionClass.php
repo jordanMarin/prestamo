@@ -7,7 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-use mvc\validator\createNegocioActionClass as validate;
+use mvc\validator\negocioValidatorClass as validate;
 
 /**
  * Description of createNegocioActionClass
@@ -19,7 +19,21 @@ class createNegocioActionClass extends controllerClass implements controllerActi
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
+        
+          
+       
+        $nombre = request::getInstance()->getPost('inputNombre');
+         $direccion = request::getInstance()->getPost('inputDireccion');
+         $telefono = request::getInstance()->getPost('inputTelefono');
+        $INGRESO_MENSUAL = request::getInstance()->getPost('inputIngreso_mensual');
+        $cliente = request::getInstance()->getPost('cliente');
+      
+       
 
+       
+
+        validate::insert($nombre,$telefono,$direccion,$cliente,$INGRESO_MENSUAL);
+        
    
 
       
@@ -29,11 +43,11 @@ class createNegocioActionClass extends controllerClass implements controllerActi
           
         $data = array(
          
-          negocioTableClass::NOMBRE=>request::getInstance()->getPost(negocioTableClass::getNameField(negocioTableClass::NOMBRE,true)),
-          negocioTableClass::DIRECCION=>request::getInstance()->getPost(negocioTableClass::getNameField(negocioTableClass::DIRECCION,true)),
-          negocioTableClass::TELEFONO=>request::getInstance()->getPost(negocioTableClass::getNameField(negocioTableClass::TELEFONO,true)),
-          negocioTableClass::INGRESO_MENSUAL=>request::getInstance()->getPost(negocioTableClass::getNameField(negocioTableClass::INGRESO_MENSUAL,true)),
-          negocioTableClass::CLIENTE_ID=>request::getInstance()->getPost(negocioTableClass::getNameField(negocioTableClass::CLIENTE_ID,true)),
+          negocioTableClass::NOMBRE=>$nombre ,
+          negocioTableClass::DIRECCION=>$direccion,
+          negocioTableClass::TELEFONO=>$telefono,
+          negocioTableClass::INGRESO_MENSUAL=>$INGRESO_MENSUAL,
+          negocioTableClass::CLIENTE_ID=>$cliente,
             
            
            

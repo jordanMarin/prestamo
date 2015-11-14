@@ -7,7 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-use mvc\validator\codeudorActionClass as validate;
+use mvc\validator\codeudorValidatorClass as validate;
 
 /**
  * Description of createCodeudorActionClass
@@ -19,20 +19,32 @@ class createCodeudorActionClass extends controllerClass implements controllerAct
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
-//        $codeudor = request::getInstance()->getPost('inputNombre');
-         
+
         
+        $tipo_documento = request::getInstance()->getPost('inputTipo_documento');
+        $identificacion = request::getInstance()->getPost('inputIdentificacion');
+        $nombre = request::getInstance()->getPost('inputNombre');
+        $apellido = request::getInstance()->getPost('inputApellido');
+         $telefono = request::getInstance()->getPost('inputTelefono');
+        $celular = request::getInstance()->getPost('inputCelular');
+       
+        $correo = request::getInstance()->getPost('inputCorreo');
+        $direccion = request::getInstance()->getPost('inputDireccion');
+
+        $localidad = request::getInstance()->getPost('inputLocalidad');
+
+        validate::insert( $tipo_documento, $identificacion, $nombre, $apellido,$telefono, $celular, $correo, $direccion,$localidad);
         
         $data = array(
-            codeudorTableClass::TIPO_DOCUMENTO_ID => request::getInstance()->getPost(codeudorTableClass::getNameField(codeudorTableClass::TIPO_DOCUMENTO_ID, true)),
-            codeudorTableClass::IDENTIFICACION => request::getInstance()->getPost(codeudorTableClass::getNameField(codeudorTableClass::IDENTIFICACION, true)),
-            codeudorTableClass::NOMBRE=> request::getInstance()->getPost(codeudorTableClass::getNameField(codeudorTableClass::NOMBRE, true)),
-            codeudorTableClass::APELLIDO => request::getInstance()->getPost(codeudorTableClass::getNameField(codeudorTableClass::APELLIDO, true)),
-            codeudorTableClass::TELEFONO => request::getInstance()->getPost(codeudorTableClass::getNameField(codeudorTableClass::TELEFONO, true)),
-            codeudorTableClass::CELULAR => request::getInstance()->getPost(codeudorTableClass::getNameField(codeudorTableClass::CELULAR, true)),
-            codeudorTableClass::DIRECCION => request::getInstance()->getPost(codeudorTableClass::getNameField(codeudorTableClass::DIRECCION, true)),
-            codeudorTableClass::CORREO=>  request::getInstance()->getPost(codeudorTableClass::getNameField(codeudorTableClass::CORREO,TRUE)),
-            codeudorTableClass::LOCALIDAD_ID => request::getInstance()->getPost(codeudorTableClass::getNameField(codeudorTableClass::LOCALIDAD_ID, true)),
+            codeudorTableClass::TIPO_DOCUMENTO_ID => $tipo_documento,
+            codeudorTableClass::IDENTIFICACION => $identificacion,
+            codeudorTableClass::NOMBRE=>$nombre,
+            codeudorTableClass::APELLIDO =>$apellido, 
+            codeudorTableClass::TELEFONO =>$telefono,
+            codeudorTableClass::CELULAR => $correo,
+            codeudorTableClass::DIRECCION =>$direccion,
+            codeudorTableClass::CORREO=>$correo,  
+            codeudorTableClass::LOCALIDAD_ID => $localidad,
             
             
             

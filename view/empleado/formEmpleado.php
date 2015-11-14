@@ -9,28 +9,42 @@
   <fieldset>
     <legend>Usuario</legend>
     
-    <label for="inputUsuario" class="col-sm-2 control-label">Usuario</label>
+    <!-- ----------------------- inputUsuario ----------------------- -->
+    <div class="form-group <?php echo (session::getInstance()->hasFlash('inputUsuario')) ? 'has-error has-feedback' : '' ?>">
+      <label for="inputUsuario" class="col-sm-2 control-label">Usuario</label>
       <div class="col-sm-10">
-     <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) : (((isset($objUsuario) == true) ? $objUsuario[0]->user_name : '')) ?>" type="text" class="form-control" id="inputUsuario" name="inputUsuario" placeholder="Digite usuario">
+        <input autocomplete="off" value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) : (((isset($objUsuario) == true) ? $objUsuario[0]->user_name : '')) ?>" type="text" class="form-control" id="inputUsuario" name="inputUsuario" placeholder="Digite usuario">
+        <?php if (session::getInstance()->hasFlash('inputUsuario')): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          <p class="help-block"><i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputUsuario') ?></p>
+          <?php session::getInstance()->deleteError('inputUsuario') ?>
+        <?php endif ?>
       </div>
-    
-    <label for="inputPassword" class="col-sm-2 control-label">Contraseña</label>
+    </div>
+    <!-- ----------------------- inputUsuario ----------------------- -->
+    <div class="form-group <?php echo (session::getInstance()->hasFlash('inputPassword')) ? 'has-error has-feedback' : '' ?>">
+      <label for="inputPassword" class="col-sm-2 control-label">Contraseña</label>
       <div class="col-sm-10">
         <input value="" type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Digite contraseña">
+        <?php if (session::getInstance()->hasFlash('inputPassword')): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          <p class="help-block"><i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputPassword') ?></p>
+          <?php session::getInstance()->deleteError('inputPassword') ?>
+        <?php endif ?>
       </div>
-    
+      
   </fieldset>
   <fieldset>
     <legend><i class="glyphicon glyphicon-phone"></i>Datos del empleado</legend>
-    <?php if(session::getInstance()->hasError('inputEmpleado')): ?>
-    <?php view::getMessageError('inputEmpleado') ?>
+    <?php if (session::getInstance()->hasError('inputTipo_documento')): ?>
+      <?php view::getMessageError('inputTipo_documento') ?>
     <?php endif ?>
     
-     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputempleado')) ? 'has-error has-feedback' : '' ?>">
+     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputTipo_documento')) ? 'has-error has-feedback' : '' ?>">
 
-      <label for="inputCliente" class="col-sm-2 control-label">TIPO DE DOCUMENTO</label>
+      <label for="inputTipo_documento" class="col-sm-2 control-label">TIPO DE DOCUMENTO</label>
       <div class="col-sm-10">
-        <select class="form-control" name="<?php echo empleadoTableClass::getNameField(empleadoTableClass::TIPO_DOCUMENTO_ID, true) ?>">
+        <select class="form-control" name="inputTipo_documento">
           <option value="">Seleccione TIPO DOCUMENTO</option>
           <?php $tipo_documento = '' ?>
           <?php foreach ($objTipo_documento as $tipo_documento): ?>
@@ -38,7 +52,7 @@
           <?php endforeach ?>
         </select>
 
-        <?php if (session::getInstance()->hasFlash('inputempleado')): ?>
+        <?php if (session::getInstance()->hasFlash('inputTipo_documento')): ?>
           <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
         <?php endif ?>
       </div>
@@ -46,12 +60,14 @@
     
     
     
-     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputidentificacion')) ? 'has-error has-feedback' : '' ?>">
+     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputIdentificacion')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputidentificacion" class="col-sm-2 control-label">NUMERO IDENTIFICASION</label>
       <div class="col-sm-10">
-        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::IDENTIFICACION, TRUE)) : (((isset($objEmpleado) == true) ? $objEmpleado[0]->IDENTIFICACION: ''))?>" type="text" class="form-control" id="inputidentificacion" name="<?php echo empleadoTableClass::getNameField(empleadoTableClass::IDENTIFICACION, true) ?>" placeholder="Digite  numero ">
-        <?php if(session::getInstance()->hasFlash('inputidentificacion')): ?>
-        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::IDENTIFICACION, TRUE)) : (((isset($objEmpleado) == true) ? $objEmpleado[0]->IDENTIFICACION: ''))?>" type="text" class="form-control" id="inputIdentificacion" name="inputIdentificacion" placeholder="Digite  numero ">
+        <?php if (session::getInstance()->hasFlash('inputIdentificacion')): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          <p class="help-block"><i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputIdentificacion') ?></p>
+          <?php session::getInstance()->deleteError('inputIdentificacion') ?>
         <?php endif ?>
       </div>
       </div>
@@ -59,65 +75,77 @@
     
     
    
-     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputnombre')) ? 'has-error has-feedback' : '' ?>">
+     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputNombre')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputnombre" class="col-sm-2 control-label">NOMBRE</label>
       <div class="col-sm-10">
-        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, TRUE)) : (((isset($objEmpleado) == true) ? $objEmpleado[0]->nombre: ''))?>" type="text" class="form-control" id="inputnombre" name="<?php echo empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, true) ?>" placeholder="Digite  nombre empleado">
-        <?php if(session::getInstance()->hasFlash('inputnombre')): ?>
-        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::NOMBRE, TRUE)) : (((isset($objEmpleado) == true) ? $objEmpleado[0]->nombre: ''))?>" type="text" class="form-control" id="inputNombre" name="inputNombre" placeholder="Digite  nombre empleado">
+          <?php if (session::getInstance()->hasFlash('inputNombre')): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          <p class="help-block"><i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputNombre') ?></p>
+          <?php session::getInstance()->deleteError('inputNombre') ?>
         <?php endif ?>
       </div>
       </div>
     
     
-    <div class="form-group <?php echo (session::getInstance()->hasFlash('inputapellido')) ? 'has-error has-feedback' : '' ?>">
+    <div class="form-group <?php echo (session::getInstance()->hasFlash('inputApellido')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputapellido" class="col-sm-2 control-label">APELLIDO</label>
       <div class="col-sm-10">
-        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::APELLIDO, TRUE)) : (((isset($objEmpleado) == true) ? $objEmpleado[0]->APELLIDO: ''))?>" type="text" class="form-control" id="inputapellido" name="<?php echo empleadoTableClass::getNameField(empleadoTableClass::APELLIDO, true) ?>" placeholder="Digite  apellido empleado">
-        <?php if(session::getInstance()->hasFlash('inputapellido')): ?>
-        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::APELLIDO, TRUE)) : (((isset($objEmpleado) == true) ? $objEmpleado[0]->APELLIDO: ''))?>" type="text" class="form-control" id="inputApellido" name="inputApellido" placeholder="Digite  apellido empleado">
+        <?php if (session::getInstance()->hasFlash('inputApellido')): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          <p class="help-block"><i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputApellido') ?></p>
+          <?php session::getInstance()->deleteError('inputApellido') ?>
         <?php endif ?>
       </div>
       </div>
     
-    <div class="form-group <?php echo (session::getInstance()->hasFlash('inputdireccion')) ? 'has-error has-feedback' : '' ?>">
+    <div class="form-group <?php echo (session::getInstance()->hasFlash('inputDireccion')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputdireccion" class="col-sm-2 control-label">DIRECCION</label>
       <div class="col-sm-10">
-        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::DIRECCION, TRUE)) : (((isset($objEmpleado) == true) ? $objEmpleado[0]->DIRECCION: ''))?>" type="text" class="form-control" id="inputdireccion" name="<?php echo empleadoTableClass::getNameField(empleadoTableClass::DIRECCION, true) ?>" placeholder="Digite  direccion empleado">
-        <?php if(session::getInstance()->hasFlash('inputdireccion')): ?>
-        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::DIRECCION, TRUE)) : (((isset($objEmpleado) == true) ? $objEmpleado[0]->DIRECCION: ''))?>" type="text" class="form-control" id="inputDireccion" name="inputDireccion" placeholder="Digite  direccion empleado">
+      <?php if (session::getInstance()->hasFlash('inputDireccion')): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          <p class="help-block"><i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDireccion') ?></p>
+          <?php session::getInstance()->deleteError('inputDireccion') ?>
         <?php endif ?>
       </div>
       </div>
     
     
-     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputtelefono')) ? 'has-error has-feedback' : '' ?>">
+     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputTelefono')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputtelefono" class="col-sm-2 control-label">TELEFONO</label>
       <div class="col-sm-10">
-        <input value= "<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::TELEFONO, TRUE)) : (((isset($objEmpleado) == true) ? $objEmpleado[0]->TELEFONO: ''))?>" type="text" class="form-control" id="inputtelefono" name="<?php echo empleadoTableClass::getNameField(empleadoTableClass::TELEFONO, true) ?>" placeholder="Digite  telefono empleado">
-        <?php if(session::getInstance()->hasFlash('inputtelefono')): ?>
-        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <input value= "<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::TELEFONO, TRUE)) : (((isset($objEmpleado) == true) ? $objEmpleado[0]->TELEFONO: ''))?>" type="text" class="form-control" id="inputTelefono" name="inputTelefono" placeholder="Digite  telefono empleado">
+        <?php if (session::getInstance()->hasFlash('inputTelefono')): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          <p class="help-block"><i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputTelefono') ?></p>
+          <?php session::getInstance()->deleteError('inputTelefono') ?>
         <?php endif ?>
       </div>
       </div>
     
     
-    <div class="form-group <?php echo (session::getInstance()->hasFlash('inputmovil')) ? 'has-error has-feedback' : '' ?>">
+    <div class="form-group <?php echo (session::getInstance()->hasFlash('inputCelular')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputmovil" class="col-sm-2 control-label">MOVIL</label>
       <div class="col-sm-10">
-        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::MOVIL, TRUE)) : (((isset($objEmpleado) == true) ? $objEmpleado[0]->movil: ''))?>" type="text" class="form-control" id="inputmovil" name="<?php echo empleadoTableClass::getNameField(empleadoTableClass::MOVIL, true) ?>" placeholder="Digite  movil empleado">
-        <?php if(session::getInstance()->hasFlash('inputmovil')): ?>
-        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::MOVIL, TRUE)) : (((isset($objEmpleado) == true) ? $objEmpleado[0]->movil: ''))?>" type="text" class="form-control" id="inputCelular" name="inputCelular" placeholder="Digite  movil empleado">
+        <?php if (session::getInstance()->hasFlash('inputCelular')): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          <p class="help-block"><i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCelular') ?></p>
+          <?php session::getInstance()->deleteError('inputCelular') ?>
         <?php endif ?>
       </div>
       </div>
     
-      <div class="form-group <?php echo (session::getInstance()->hasFlash('inputcorreo')) ? 'has-error has-feedback' : '' ?>">
+      <div class="form-group <?php echo (session::getInstance()->hasFlash('inputCorreo')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputcorreo" class="col-sm-2 control-label">CORREO</label>
       <div class="col-sm-10">
-        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::CORREO, TRUE)) : (((isset($objEmpleado) == true) ? $objEmpleado[0]->correo: ''))?>" type="text" class="form-control" id="inputcorreo" name="<?php echo empleadoTableClass::getNameField(empleadoTableClass::CORREO, true) ?>" placeholder="Digite correo empleado">
-        <?php if(session::getInstance()->hasFlash('inputcorreo')): ?>
-        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <input value="<?php echo (session::getInstance()->hasFlash(usuarioTableClass::getNameField(usuarioTableClass::USER, TRUE)) === TRUE) ? request::getInstance()->getPost(empleadoTableClass::getNameField(empleadoTableClass::CORREO, TRUE)) : (((isset($objEmpleado) == true) ? $objEmpleado[0]->correo: ''))?>" type="text" class="form-control" id="inputCorreo" name="inputCorreo" placeholder="Digite correo empleado">
+      <?php if (session::getInstance()->hasFlash('inputCorreo')): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          <p class="help-block"><i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCorreo') ?></p>
+          <?php session::getInstance()->deleteError('inputCorreo') ?>
         <?php endif ?>
       </div>
       </div>

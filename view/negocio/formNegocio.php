@@ -6,15 +6,15 @@
 <form class="form-horizontal ibody" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('negocio','createNegocio') ?>">
   <fieldset>
     
-    <?php if(session::getInstance()->hasError('inputNegocio')): ?>
-    <?php view::getMessageError('inputNegocio') ?>
+    <?php if(session::getInstance()->hasError('inputCliente')): ?>
+    <?php view::getMessageError('inputCliente') ?>
     <?php endif ?>
     
-    <div class="form-group <?php echo (session::getInstance()->hasFlash('inputCodeudor')) ? 'has-error has-feedback' : '' ?>">
+    <div class="form-group <?php echo (session::getInstance()->hasFlash('inputCliente')) ? 'has-error has-feedback' : '' ?>">
 
-      <label for="inputCodeudor" class="col-sm-2 control-label">CLIENTE</label>
+      <label for="inputCliente" class="col-sm-2 control-label">CLIENTE</label>
       <div class="col-sm-10">
-        <select class="form-control" name="<?php echo negocioTableClass::getNameField(negocioTableClass::CLIENTE_ID,TRUE)?>">
+        <select class="form-control" name="inputCliente">
 
           <option value="">Seleccione Cliente</option>
           <?php $cliente = '' ?>
@@ -29,12 +29,14 @@
       </div>
     </div>
    
-     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputnombre')) ? 'has-error has-feedback' : '' ?>">
+     <div class="form-group <?php echo (session::getInstance()->hasFlash('inputNombre')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputnombre" class="col-sm-2 control-label">NOMBRE</label>
       <div class="col-sm-10">
-        <input value="<?php echo (request::getInstance()->hasPost('inputnombre')) ? request::getInstance()->getPost('inputnombre') : '' ?>" type="text" class="form-control" id="inputnombre" name="<?php echo negocioTableClass::getNameField(negocioTableClass::NOMBRE, TRUE)?>" placeholder="digite el nombre">
-        <?php if(session::getInstance()->hasFlash('inputnombre')): ?>
-        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <input value="<?php echo (request::getInstance()->hasPost('inputNombre')) ? request::getInstance()->getPost('inputNombre') : '' ?>" type="text" class="form-control" id="inputNombre" name="inputNombre" placeholder="digite el nombre">
+         <?php if (session::getInstance()->hasFlash('inputNombre')): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          <p class="help-block"><i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputNombre') ?></p>
+          <?php session::getInstance()->deleteError('inputNombre') ?>
         <?php endif ?>
       </div>
       </div>
@@ -42,29 +44,35 @@
      <div class="form-group <?php echo (session::getInstance()->hasFlash('inputDireccion')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputdireccion_cliente" class="col-sm-2 control-label">DIRECCION</label>
       <div class="col-sm-10">
-        <input value="<?php echo (request::getInstance()->hasPost('inputDireccion')) ? request::getInstance()->getPost('inputDireccion') : '' ?>" type="text" class="form-control" id="inputdireccion" name="<?php echo negocioTableClass::getNameField(negocioTableClass::DIRECCION,TRUE)?>" placeholder="Digite La direccion">
-        <?php if(session::getInstance()->hasFlash('inputDireccion')): ?>
-        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <input value="<?php echo (request::getInstance()->hasPost('inputDireccion')) ? request::getInstance()->getPost('inputDireccion') : '' ?>" type="text" class="form-control" id="inputDireccion" name="inputDireccion" placeholder="Digite La direccion">
+         <?php if (session::getInstance()->hasFlash('inputDireccion')): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          <p class="help-block"><i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDireccion') ?></p>
+          <?php session::getInstance()->deleteError('inputDireccion') ?>
         <?php endif ?>
       </div>
       </div>
     
-    <div class="form-group <?php echo (session::getInstance()->hasFlash('inputtelefono')) ? 'has-error has-feedback' : '' ?>">
+    <div class="form-group <?php echo (session::getInstance()->hasFlash('inputTelefono')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputtelefono" class="col-sm-2 control-label">TELEFONO</label>
       <div class="col-sm-10">
-        <input value="<?php echo (request::getInstance()->hasPost('inputtelefono')) ? request::getInstance()->getPost('inputtelefono') : '' ?>" type="text" class="form-control" id="inputtelefono" name="<?php echo negocioTableClass::getNameField(negocioTableClass::TELEFONO,TRUE)?>" placeholder="Digite numero de telefono">
-        <?php if(session::getInstance()->hasFlash('inputtelefono')): ?>
-        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <input value="<?php echo (request::getInstance()->hasPost('inputTelefono')) ? request::getInstance()->getPost('inputTelefono') : '' ?>" type="text" class="form-control" id="inputTelefono" name="inputTelefono" placeholder="Digite numero de telefono">
+       <?php if (session::getInstance()->hasFlash('inputTelefono')): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          <p class="help-block"><i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputTelefono') ?></p>
+          <?php session::getInstance()->deleteError('inputTelefono') ?>
         <?php endif ?>
       </div>
       </div>
     
-      <div class="form-group <?php echo (session::getInstance()->hasFlash('inputIngreso')) ? 'has-error has-feedback' : '' ?>">
+      <div class="form-group <?php echo (session::getInstance()->hasFlash('inputIngreso_mensual')) ? 'has-error has-feedback' : '' ?>">
       <label for="inputmovil" class="col-sm-2 control-label">INGRESO MENSUAL</label>
       <div class="col-sm-10">
-        <input value="<?php echo (request::getInstance()->hasPost('inputIngreso')) ? request::getInstance()->getPost('inputIngreso') : '' ?>" type="text" class="form-control" id="inputIngreso" name="<?php echo negocioTableClass::getNameField(negocioTableClass::INGRESO_MENSUAL,TRUE)?>" placeholder="Digite ingreso mensual">
-        <?php if(session::getInstance()->hasFlash('inputIngreso')): ?>
-        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        <input value="<?php echo (request::getInstance()->hasPost('inputIngreso_mensual')) ? request::getInstance()->getPost('inputIngreso_mensual') : '' ?>" type="text" class="form-control" id="inputIngreso_mensual" name="inputIngreso_mensual" placeholder="Digite ingreso mensual">
+        <?php if (session::getInstance()->hasFlash('inputIngreso_mensual')): ?>
+          <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+          <p class="help-block"><i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputIngreso_mensual') ?></p>
+          <?php session::getInstance()->deleteError('inputIngreso_mensual') ?>
         <?php endif ?>
       </div>
       </div>

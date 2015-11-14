@@ -173,7 +173,7 @@ empleado_empleado_create:
     - model/empleadoTableClass.php
     - model/base/tipo_documentoBaseTableClass.php
     - model/tipo_documentoTableClass.php
-    - libs/validator/prestamo/createEmpleadoValidatorClass.php
+    - libs/validator/empleado/empleadoValidatorClass.php
 empleado_listado:
   url:    /empleado/listado
   param:  { module: empleado, action: listado, format: html }
@@ -224,7 +224,7 @@ negocio_negocio_create:
   load:
     - model/base/negocioBaseTableClass.php
     - model/negocioTableClass.php
-    - libs/validator/prestamo/createNegocioValidatorClass.php
+    - libs/validator/negocio/negocioValidatorClass.php
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
 negocio_listado:
