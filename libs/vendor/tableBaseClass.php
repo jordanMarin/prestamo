@@ -30,11 +30,9 @@ namespace mvc\model\table {
      */
     public static function delete($fieldsAndValues, $deletedLogical = true, $table) {
       try {
-
         if ($deletedLogical === false) {
           $sql = "DELETE FROM $table ";
           $sqlID = "SELECT id FROM $table ";
-
           $flag = 0;
           foreach ($fieldsAndValues as $field => $value) {
             if ($flag === 0) {
@@ -46,11 +44,9 @@ namespace mvc\model\table {
               $sqlID = $sqlID . 'AND ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
             }
           }
-
           $row = model::getInstance()->query($sqlID);
           $answer = $row->fetch(\PDO::FETCH_OBJ);
           $answer = (integer) $answer->id;
-
           model::getInstance()->beginTransaction();
           model::getInstance()->exec($sql);
           model::getInstance()->commit();
@@ -58,7 +54,6 @@ namespace mvc\model\table {
           $data[self::$fieldDeleteAt] = date(config::getFormatTimestamp());
           $answer = self::update($fieldsAndValues, $data, $table);
         }
-
         return $answer;
       } catch (\PDOException $exc) {
         // en caso de haber un error entonces se devuelve todo y se deja como estaba
@@ -101,9 +96,7 @@ namespace mvc\model\table {
      */
     public static function insert($table, $data) {
       try {
-
         $sql = "INSERT INTO $table ";
-
         $line1 = '(';
         $line2 = 'VALUES (';
         foreach ($data as $field => $value) {
@@ -112,17 +105,11 @@ namespace mvc\model\table {
             $line2 = $line2 . ((is_numeric($value) === true) ? $value : "'" . $value . "'") . ', ';
           }
         }
-
         $newLeng = strlen($line1) - 2;
         $line1 = substr($line1, 0, $newLeng) . ') ';
-
         $newLeng = strlen($line2) - 2;
         $line2 = substr($line2, 0, $newLeng) . ')';
-
         $sql = $sql . $line1 . $line2;
-        //echo $sql;
-        //die();
-
         model::getInstance()->beginTransaction();
         model::getInstance()->exec($sql);
         model::getInstance()->commit();
@@ -158,30 +145,32 @@ namespace mvc\model\table {
      */
     public static function getAll($table, $fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where = null) {
       try {
-
         $sql = 'SELECT ';
-
         foreach ($fields as $field) {
           $sql = $sql . $table . '.' . $field . ', ';
         }
-
         $newLeng = strlen($sql) - 2;
         $sql = substr($sql, 0, $newLeng);
-
         $sql = $sql . ' FROM ' . $table;
-
         $flag = false;
-
         if ($deletedLogical === true) {
           $sql = $sql . ' WHERE ' . $table . '.' . self::$fieldDeleteAt . ' IS NULL';
           $flag = true;
         }
-
         if ($deletedLogical === false and is_array($where) === true) {
           //$sql = $sql . ' WHERE ';
           $flag = false;
         }
-
+        /**
+         * array(
+         *    campo => valor,
+         *    campo => array(
+         *      fecha1,
+         *      fecha2
+         *    ),
+         *    0 => valorSQL
+         * )
+         */
         if (is_array($where) === true) {
           foreach ($where as $field => $value) {
             if (is_array($value)) {
@@ -209,29 +198,20 @@ namespace mvc\model\table {
             }
           }
         }
-
         if ($orderBy !== null) {
           $sql = $sql . ' ORDER BY ';
-
           foreach ($orderBy as $value) {
             $sql = $sql . $table . '.' . $value . ', ';
           }
-
           $newLeng = strlen($sql) - 2;
           $sql = substr($sql, 0, $newLeng) . (($order !== null) ? " $order" : '');
         }
-
         if ($limit !== null and $offset === null) {
           $sql = $sql . ' LIMIT ' . $limit;
         }
-
         if ($limit !== null and $offset !== null) {
           $sql = $sql . ' LIMIT ' . $limit . ' OFFSET ' . $offset;
         }
-
-//        
-//        echo $sql;
-//        die();
         return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
       } catch (\PDOException $exc) {
         throw $exc;
@@ -252,17 +232,13 @@ namespace mvc\model\table {
      */
     public static function update($ids, $data, $table) {
       try {
-
         $sql = "UPDATE $table SET ";
         $sqlID = "SELECT id FROM $table";
-
         foreach ($data as $key => $value) {
           $sql = $sql . " " . $key . " = '" . $value . "', ";
         }
-
         $newLeng = strlen($sql) - 2;
         $sql = substr($sql, 0, $newLeng);
-
         $flag = 0;
         foreach ($ids as $field => $value) {
           if ($flag === 0) {
@@ -274,14 +250,11 @@ namespace mvc\model\table {
           }
           $flag++;
         }
-
         model::getInstance()->beginTransaction();
         model::getInstance()->exec($sql);
         model::getInstance()->commit();
-
         $row = model::getInstance()->query($sqlID);
         $answer = $row->fetch(\PDO::FETCH_OBJ);
-
         return (integer) $answer->id;
       } catch (\PDOException $exc) {
         model::getInstance()->rollback();

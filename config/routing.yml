@@ -5,6 +5,27 @@ homepage:
 adminHomepage:
   url:    /admin
   param:  { module: sitioWeb, action: admin, format: html }
+  
+clienteHomepage:
+  url:    /cliente
+  param:  { module: sitioWeb, action: cliente, format: html }
+
+cobradorHomepage:
+  url:    /cobrador
+  param:  { module: sitioWeb, action: cobrador, format: html }
+
+buscar:
+  url:    /buscar
+  param:  { module: sitioWeb, action: buscar, format: html }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/codeudorBaseTableClass.php
+    - model/codeudorTableClass.php
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+    - model/base/negocioBaseTableClass.php
+    - model/negocioTableClass.php
 
 shfSecurity_index:
   url:    /signin

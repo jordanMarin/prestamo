@@ -23,7 +23,7 @@ class updateBancoActionClass extends controllerClass implements controllerAction
         $id = request::getInstance()->getPost(bancoTableClass::getNameField(bancoTableClass::ID, true));
         $nombre = request::getInstance()->getPost(bancoTableClass::getNameField(bancoTableClass::NOMBRE, true));
         
-        $id = array(
+        $ids = array(
           bancoTableClass::ID => $id
         );
         
@@ -34,7 +34,7 @@ class updateBancoActionClass extends controllerClass implements controllerAction
         bancoTableClass::update($ids, $data);
       }
       
-      routing::getInstance()->redirect('@banco');
+      routing::getInstance()->redirect('@banco_index');
       
       //$this->defineView('editBanco', 'banco', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

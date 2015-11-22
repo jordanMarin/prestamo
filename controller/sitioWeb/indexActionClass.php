@@ -20,6 +20,10 @@ class indexActionClass extends controller implements controllerActionInterface {
       $session = session::getInstance();
       if ($session->isUserAuthenticated() === true and $session->hasCredential('admin')) {
         routing::getInstance()->forward('@adminHomepage');
+      } else if ($session->isUserAuthenticated() === true and $session->hasCredential('cliente')) {
+        routing::getInstance()->forward('@clienteHomepage');
+      } else if ($session->isUserAuthenticated() === true and $session->hasCredential('cobrador')) {
+        routing::getInstance()->forward('@cobradorHomepage');
       } else {
         $this->defineView('index', 'sitioWeb', session::getInstance()->getFormatOutput());
       }

@@ -4,14 +4,14 @@
 <div class="container container-fluid margenContainer">
   <div class="row">
     <div class="col-lg-3">
-      <?php view::includePartial('componente/menuIzquierdoAdmin') ?>
+      <?php view::includePartial('componente/menuIzquierdoCobrador') ?>
     </div>
     <div class="col-lg-9">
       <div class="panel panel-default">
         <div class="panel-body">
           <!-- TITULO -->
           <div class="page-header">
-            <h1><i class="fa fa-fw fa-dashboard"></i> Panel de administración</h1>
+            <h1><i class="fa fa-fw fa-dashboard"></i> Panel del cobrador</h1>
           </div>
           <!-- TITULO -->
 
